@@ -5,19 +5,17 @@ function WelcomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Welcome</Text>
-      <Button
-        title="Go to Login"
-        onPress={() => navigation.navigate('Login')}
-      />
-<hr></hr>
-            <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}  
-      />
       <hr></hr>
-            <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-              <hr></hr>
-            <Button title="Go back" onPress={() => navigation.goBack()} />
+            <Button title="Go to Home"
+            onPress={() => navigation.navigate('Home')}  />
+      <hr></hr>
+            <Button title="Go to Details" 
+            onPress={() => navigation.navigate('Details')} />
+      <hr></hr>
+            <Button title="Go to Notifications" 
+            onPress={() => navigation.navigate('Notifications')} />
+      <hr></hr>
+              
     </View>
   );
 }

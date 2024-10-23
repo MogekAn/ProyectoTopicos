@@ -1,25 +1,59 @@
-import * as React from 'react';
-import { Button, View, Text } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, Animated, ImageBackground, StyleSheet } from 'react-native';
 
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Notifications</Text>
-      <Button
-        title="Go to Login"
-        onPress={() => navigation.navigate('Login')}
-      />
-<hr></hr>
-            <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}  
-      />
-      <hr></hr>
-            <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-              <hr></hr>
-            <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-  );
+function NotificationsScreen() {
+    const animatedValue = useRef(new Animated.Value(0)).current;
+
+    useEffect(() => {
+        Animated.loop(
+            Animated.sequence([
+                Animated.timing(animatedValue, {
+                    toValue: 1,
+                    duration: 1000,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(animatedValue, {
+                    toValue: 0,
+                    duration: 1000,
+                    useNativeDriver: true,
+                }),
+            ])
+        ).start();
+    }, [animatedValue]);
+
+    const translateY = animatedValue.interpolate({
+        inputRange: [0, 10],
+        outputRange: [0, -100],
+    });
+
+    return (
+            <View style={styles.container}>
+                <Animated.Text style={[styles.text, { transform: [{ translateY }] }]}>
+                 Notifications Screen
+                </Animated.Text>
+                
+            </View>
+    );
 }
+
+
+
+const styles = StyleSheet.create({
+    background: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        resizeMode: 'cover', 
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    text: {
+        fontSize: 32,
+        color: 'black',
+    },
+});
 
 export default NotificationsScreen;
