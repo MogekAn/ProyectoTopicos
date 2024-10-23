@@ -20,6 +20,11 @@ function HomeScreen ({navigation}){
             <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
               <hr></hr>
             <Button title="Go back" onPress={() => navigation.goBack()} />
+      <hr></hr>
+        <Button
+        title="Go to Notifications"
+        onPress={() => navigation.navigate('Notifications')}
+      />
       </View>
     );
   }
