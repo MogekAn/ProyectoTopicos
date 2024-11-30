@@ -1,15 +1,16 @@
+
 {
   "expo": {
-    "name": "Ejemplo2",
-    "slug": "Ejemplo2",
+    "name": "AppExample",
+    "slug": "AppExample",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/taxi.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/fondo.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#5dff8a"
     },
     "ios": {
       "supportsTablet": true
