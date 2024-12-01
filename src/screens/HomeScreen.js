@@ -9,6 +9,7 @@ function HomeScreen({ navigation }) {
           Próximos Eventos en Aguascalientes
         </Text>
       </Center>
+
       {/* Primeros dos eventos en un VStack */}
       <HStack space={4} justifyContent="space-between" mb={6}>
         <Box bg="blue.100" p="4" rounded="lg" shadow={2} flex={1}>
@@ -16,7 +17,7 @@ function HomeScreen({ navigation }) {
             Winter Beer Fest
           </Text>
           <img
-            src="../..\assets\images\WinterBeerFest.jpg"
+            src= 'https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-6/466780242_575990011617597_1296820051847026476_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Y9BKfd9PAPUQ7kNvgEB4AOJ&_nc_zt=23&_nc_ht=scontent.fagu3-1.fna&_nc_gid=A70ImpGLgBhTVi1-IClDzDE&oh=00_AYAwYS8cs8gq_5HXVm2OS98Afo8PAldbT5Fd00s9pv77-w&oe=67529497'
             alt="Winter"
             style={{ width: '100%', height: 'auto'}} 
           />
@@ -33,9 +34,12 @@ function HomeScreen({ navigation }) {
 
         <Box bg="green.100" p="4" rounded="lg" shadow={2} flex={1}>
           <Text fontSize="lg" fontWeight="bold">
-            Feria del Libro
+            Concierto Navidad
           </Text>
-
+          <img 
+          src='https://www.showticket.com.mx/uplimage/BANNERSHOWTICKET.png'
+          alt="ConciertoNavidad" 
+          style={{ width: '100%', height: 'auto'}} />
           <hr />
           <Text>Fecha: 20 de diciembre, 2024</Text>
           <Text>Lugar: Centro de Convenciones</Text>
@@ -54,7 +58,9 @@ function HomeScreen({ navigation }) {
           <Text fontSize="lg" fontWeight="bold">
             Market Nocturno
           </Text>
-          <img src="../..\assets\images\Market.jpg" alt="Market" 
+          <img 
+          src= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPvid-_USxy0e-mOyFTHFxUTDt1WOemXS0OA&s' 
+          alt="Market" 
           style={{ width: '100%', height: 'auto'}} />
           <hr />
           <Text>Fecha: Sábados y viernes</Text>
@@ -71,8 +77,9 @@ function HomeScreen({ navigation }) {
           <Text fontSize="lg" fontWeight="bold">
             Feria Nacional de San Marcos 2025
           </Text>
-          <img src="../..\assets\images\FNSM25.png" alt="FNSM25" 
-          style={{ width: '100%', height: 'auto'}} />
+          <img 
+            src= 'https://www.laferiadesanmarcos.com/wp-content/uploads/2024/03/feria-nacional-de-san-marcos-2025.jpg' 
+            alt="FNSM25" />
           <hr />
           <Text>Fecha: Del 19 de abril al 11 de Mayo, 2025</Text>
           <HStack space={4} justifyContent="center" mt={6}>
@@ -86,7 +93,9 @@ function HomeScreen({ navigation }) {
           <Text fontSize="lg" fontWeight="bold">
             Kudai
           </Text>
-          <img src="../..\assets\images\kudai.jpg" alt="Kudai"
+          <img 
+          src= 'https://cdn.arema.dev/live/eventos/13078.jpg' 
+          alt="Kudai"
           style={{ width: '100%', height: 'auto'}} />
           <hr />
           <Text>Fecha: 07 de diciembre</Text>
