@@ -77,7 +77,7 @@ const Favorito = () => {
                 as={FontAwesome}
                 name="trash"
                 size="lg"
-                color="red.500"
+                color="gray.800"
                 position="absolute"
                 bottom={10}
                 right={4}

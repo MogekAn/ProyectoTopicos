@@ -24,7 +24,7 @@ const Guardados = () => {
             as={FontAwesome}
             name="calendar"
             size="4xl"
-            color="blue.500"
+            color="yellow.500"
             mr={2}
           />
           <Text fontSize="4xl" color="gray.600" fontWeight="bold" textAlign="center">
@@ -61,6 +61,26 @@ const Guardados = () => {
               />
               <Text fontSize="lg" fontWeight="bold" mb={2} textAlign="center">{evento.name}</Text>
               <Text fontSize="sm" color="gray.500" textAlign="center">{evento.category}</Text>
+
+              {/* Iconos fuera del botón */}
+              <Icon
+                as={FontAwesome}
+                name="heart"
+                size="lg"
+                color="blue.500"
+                position="absolute"
+                bottom={10}
+                left={4}
+              />
+              <Icon
+                as={FontAwesome}
+                name="trash"
+                size="lg"
+                color="gray.800"
+                position="absolute"
+                bottom={10}
+                right={4}
+              />
 
               <Button
                 mt={3}
