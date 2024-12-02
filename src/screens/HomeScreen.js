@@ -51,7 +51,6 @@ function HomeScreen({ navigation }) {
         </Box>
       </HStack>
 
-
       {/* Últimos tres eventos en un HStack */}
       <HStack space={4} justifyContent="space-between" mb={6}>
         <Box bg="purple.100" p="4" rounded="lg" shadow={2} flex={1}>
