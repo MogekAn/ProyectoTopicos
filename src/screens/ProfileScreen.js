@@ -1,7 +1,7 @@
 import React from 'react';
 import { Center, HStack, Button, Text, Image, VStack, useToast } from 'native-base';
 import { useNavigation } from '@react-navigation/native'; // Importa useNavigation
-import Market from './Market';
+
 
 const ProfileScreen = () => {
   const toast = useToast();

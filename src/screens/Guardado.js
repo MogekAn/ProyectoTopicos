@@ -8,7 +8,7 @@ const Guardados = () => {
   const navigation = useNavigation(); // Obtén el objeto de navegación
 
   const eventosGuardados = [
-    { id: 1, name: 'Winter Beer Fest 2024', category: 'Cultura', image: 'https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-6/466780242_575990011617597_1296820051847026476_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Y9BKfd9PAPUQ7kNvgEB4AOJ&_nc_zt=23&_nc_ht=scontent.fagu3-1.fna&_nc_gid=A70ImpGLgBhTVi1-IClDzDE&oh=00_AYAwYS8cs8gq_5HXVm2OS98Afo8PAldbT5Fd00s9pv77-w&oe=67529497' },
+    { id: 6, name: 'KUDAI       ', category: 'Conciertos', image: 'https://cdn.arema.dev/live/eventos/13078.jpg' },
     { id: 2, name: 'Star-Con Edicion 17', category: 'Anime', image: 'https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-6/468391126_1125923858905644_7957278738722550313_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Esz2OK3Jdi8Q7kNvgGd_Y4S&_nc_zt=23&_nc_ht=scontent.fagu3-1.fna&_nc_gid=AMVfFDc-ozLxKxGN9dDDnt_&oh=00_AYDnIBh6IvWtE6TJncmL9axVEe5LIOI0fIG7xNPAHeL6lw&oe=6753B2F6' },
     { id: 3, name: 'Market Nocturno Ags', category: 'Cultura', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPvid-_USxy0e-mOyFTHFxUTDt1WOemXS0OA&s' },
     { id: 4, name: 'GRAN CONCIERTO SINFÓNICO DE NAVIDAD Y AÑO NUEVO 2024', category: 'Teatro', image: 'https://www.showticket.com.mx/uplimage/BANNERSHOWTICKET.png' },
@@ -90,6 +90,8 @@ const Guardados = () => {
                     navigation.navigate('Market', { event: evento }); // Navega a Market
                   } else {
                     navigation.navigate('EventoDetalle', { event: evento }); // Navega a EventoDetalle
+                  } if (evento.id === 6) {
+                    navigation.navigate('Kudai', { event: evento }); // Navega a Kudai
                   }
                 }}
               >

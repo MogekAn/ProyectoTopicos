@@ -44,25 +44,27 @@ function Market({ route }) {
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.details}>
                 🔴MERCADO GASTRONÓMICO 🍔
-                <br />
                 ⚡️Descubre la magia nocturna en el 💙 de Aguascalientes‼️
-                <br />
                 Ven a 🍿♟️🎲‼️
-                <br />
                 Lugar y horario: Viernes Y Sabado de 6:00 a 10:30
-                <br />
                 Bosque urbano FICOTRECE aun costado del velódromo sobre Av heroico colegio militar
-                <hr color='blue' />
-                <br />
-                Mas info
               </Text>
-              {/** Redes para más info */}
-              <Icon name="logo-facebook" size={30} color="gray" style={styles.rightIcon}
-                onPress={() => Linking.openURL("https://www.facebook.com/profile.php?id=100083598896259&locale=es_LA")} />
-              <Icon name="logo-instagram" size={30} color="gray" style={styles.rightIcon}
-                onPress={() => Linking.openURL("https://www.instagram.com/Market_nocturno?fbclid=IwY2xjawG6NEtleHRuA2FlbQIxMAABHTA7Yz_hENyMS_UjuHiq0K_Dtb4Tf1q7IahSYtQs3gCfrzpP91aDGYbG4A_aem_hjW0KYQejx5F0xJn4Xoh-A")} />
-              <Icon name="logo-tiktok" size={30} color="gray" style={styles.rightIcon}
-                onPress={() => Linking.openURL("https://www.tiktok.com/@marketnocturnoags?is_from_webapp=1&sender_device=pc")} />
+
+              {/* Línea azul y leyenda "Más info" */}
+              <View style={styles.infoContainer}>
+                <View style={styles.line} />
+                <Text style={styles.infoText}>Más info</Text>
+              </View>
+
+              {/* Redes para más info */}
+              <View style={styles.socialIconsRow}>
+                <Icon name="logo-facebook" size={30} color="gray" style={styles.socialIcon}
+                  onPress={() => Linking.openURL("https://www.facebook.com/profile.php?id=100083598896259&locale=es_LA")} />
+                <Icon name="logo-instagram" size={30} color="gray" style={styles.socialIcon}
+                  onPress={() => Linking.openURL("https://www.instagram.com/Market_nocturno?fbclid=IwY2xjawG6NEtleHRuA2FlbQIxMAABHTA7Yz_hENyMS_UjuHiq0K_Dtb4Tf1q7IahSYtQs3gCfrzpP91aDGYbG4A_aem_hjW0KYQejx5F0xJn4Xoh-A")} />
+                <Icon name="logo-tiktok" size={30} color="gray" style={styles.socialIcon}
+                  onPress={() => Linking.openURL("https://www.tiktok.com/@marketnocturnoags?is_from_webapp=1&sender_device=pc")} />
+              </View>
             </View>
           </View>
         </View>
@@ -99,9 +101,9 @@ const styles = StyleSheet.create({
   },
   iconRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between', // Separa los íconos en los extremos
+    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10, // Espacio debajo de los íconos
+    marginBottom: 10,
   },
   leftIcon: {
     marginLeft: 10,
@@ -112,26 +114,51 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10, // Espacio entre el título y el contenido
+    marginBottom: 10,
   },
   hStack: {
-    flexDirection: 'row', // Alinea los elementos horizontalmente
-    alignItems: 'center', // Centra verticalmente la imagen
+    flexDirection: 'row',
+    alignItems: 'center',
     marginVertical: 10,
   },
   additionalImage: {
     width: 200,
     height: 250,
     borderRadius: 10,
-    marginRight: 20, // Espacio entre la imagen y el texto
+    marginRight: 20,
   },
   detailsContainer: {
-    flex: 1, // Hace que el contenedor ocupe el espacio restante
+    flex: 1,
   },
   details: {
     fontSize: 16,
-    lineHeight: 22, // Mejora la legibilidad del texto
+    lineHeight: 22,
+  },
+  infoContainer: {
+    marginTop: 15,
+    alignItems: 'flex-start', // Alinea a la izquierda
+  },
+  infoText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#a9a9a9', // Gris claro
+    marginBottom: 5,
+  },
+  line: {
+    width: '100%',
+    height: 2,
+    backgroundColor: 'blue',
+    marginTop: 5, // Espacio entre el texto y la línea
+  },
+  socialIconsRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginTop: 10,
+  },
+  socialIcon: {
+    marginHorizontal: 10,
   },
 });
+
 
 export default Market;

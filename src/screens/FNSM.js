@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Linking } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons'; // Importa los íconos desde react-native-vector-icons
+import Icon from 'react-native-vector-icons/Ionicons';
 
 function FNSM({ route }) {
   const { event } = route.params;
@@ -13,58 +13,88 @@ function FNSM({ route }) {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.rowContainer}>
         <View style={styles.imageContainer}>
-          <Image 
+          <Image
             source={require('../../assets/images/FNSM.png')} // Ruta de la imagen en el proyecto
-            style={styles.image} 
+            style={styles.image}
           />
         </View>
-        
+
         <View style={styles.textContainer}>
           {/* Contenedor para los íconos */}
           <View style={styles.iconRow}>
             {/* Icono de corazón */}
-            <Icon 
-              name={isLiked ? "heart" : "heart-outline"} 
-              size={30} 
-              color="red" 
-              style={styles.leftIcon} 
+            <Icon
+              name={isLiked ? "heart" : "heart-outline"}
+              size={30}
+              color="red"
+              style={styles.leftIcon}
               onPress={() => setIsLiked(!isLiked)} // Alterna el estado
             />
             {/* Icono de calendario */}
-            <Icon 
-              name={isScheduled ? "calendar" : "calendar-outline"} 
-              size={30} 
-              color="black" 
-              style={styles.rightIcon} 
+            <Icon
+              name={isScheduled ? "calendar-sharp" : "calendar-outline"}
+              size={30}
+              color="black"
+              style={styles.rightIcon}
               onPress={() => setIsScheduled(!isScheduled)} // Alterna el estado
             />
           </View>
 
           {/* Nueva sección con HStack */}
           <View style={styles.hStack}>
-            <Image 
-              source={{ uri: 'https://www.laferiadesanmarcos.com/wp-content/uploads/2024/03/feria-nacional-de-san-marcos-2025.jpg' }} 
-              style={styles.additionalImage} 
+            <Image
+              source={{
+                uri: 'https://www.laferiadesanmarcos.com/wp-content/uploads/2024/03/feria-nacional-de-san-marcos-2025.jpg',
+              }}
+              style={styles.additionalImage}
             />
             <View style={styles.detailsContainer}>
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.details}>
-                Del 19 de abril al 11 de mayo de 2025  
-                <br />
-                En Aguascalientes
-                <br />
-                Próximamente más detalles
-                <hr color='blue'/>
-                <br />
-                Mas info
+                🎉 Feria Nacional de San Marcos 2025
+                </Text>
+                <Text style={styles.details}>
+                📅 Del 19 de abril al 11 de mayo  
+                </Text>
+                <Text style={styles.details}>
+                📍 En Aguascalientes
+                </Text>
+                <Text style={styles.details}>
+                🔜 Próximamente más detalles
               </Text>
-              {/** Redes para más info */}
-              <Icon name="logo-facebook" size={30} color="gray" style={styles.rightIcon} 
-                onPress={() => Linking.openURL("https://www.facebook.com/ferianacionaldesanmarcosoficial")} />
-              <Icon name="logo-instagram" size={30} color="gray" style={styles.rightIcon} 
-                onPress={() => Linking.openURL("https://www.instagram.com/fnsm_oficial/")} />
-              <Icon name="logo-tiktok" size={30} color="gray" style={styles.rightIcon} 
-                onPress={() => Linking.openURL("https://www.tiktok.com/@fnsm_oficial?is_from_webapp=1&sender_device=pc")} />
+
+              {/* Línea azul y leyenda "Más info" */}
+              <View style={styles.infoContainer}>
+                <View style={styles.line} />
+                <Text style={styles.infoText}>Más info</Text>
+              </View>
+
+              {/* Redes para más info */}
+              <View style={styles.socialIconsRow}>
+                <Icon
+                  name="logo-facebook"
+                  size={30}
+                  color="gray"
+                  style={styles.socialIcon}
+                  onPress={() => Linking.openURL("https://www.facebook.com/ferianacionaldesanmarcosoficial")}
+                />
+                <Icon
+                  name="logo-instagram"
+                  size={30}
+                  color="gray"
+                  style={styles.socialIcon}
+                  onPress={() => Linking.openURL("https://www.instagram.com/fnsm_oficial/")}
+                />
+                <Icon
+                  name="logo-tiktok"
+                  size={30}
+                  color="gray"
+                  style={styles.socialIcon}
+                  onPress={() =>
+                    Linking.openURL("https://www.tiktok.com/@fnsm_oficial?is_from_webapp=1&sender_device=pc")
+                  }
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -86,7 +116,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   imageContainer: {
-    width: '40%', 
+    width: '40%',
     height: 500,
     marginRight: 20,
   },
@@ -101,9 +131,9 @@ const styles = StyleSheet.create({
   },
   iconRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between', // Separa los íconos en los extremos
+    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10, // Espacio debajo de los íconos
+    marginBottom: 10,
   },
   leftIcon: {
     marginLeft: 10,
@@ -114,25 +144,49 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10, // Espacio entre el título y el contenido
+    marginBottom: 10,
   },
   hStack: {
-    flexDirection: 'row', // Alinea los elementos horizontalmente
-    alignItems: 'center', // Centra verticalmente la imagen
+    flexDirection: 'row',
+    alignItems: 'center',
     marginVertical: 10,
   },
   additionalImage: {
-    width: 200, 
+    width: 200,
     height: 250,
     borderRadius: 10,
-    marginRight: 20, // Espacio entre la imagen y el texto
+    marginRight: 20,
   },
   detailsContainer: {
-    flex: 1, // Hace que el contenedor ocupe el espacio restante
+    flex: 1,
   },
   details: {
     fontSize: 16,
-    lineHeight: 22, // Mejora la legibilidad del texto
+    lineHeight: 22,
+  },
+  infoContainer: {
+    marginTop: 15,
+    alignItems: 'flex-start', // Alinea a la izquierda
+  },
+  infoText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#a9a9a9', // Gris claro
+    marginBottom: 5,
+  },
+  line: {
+    width: '100%',
+    height: 2,
+    backgroundColor: 'blue',
+    marginTop: 5, // Espacio entre el texto y la línea
+  },
+  socialIconsRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginTop: 10,
+  },
+  socialIcon: {
+    marginHorizontal: 10,
   },
 });
 
