@@ -2,6 +2,7 @@ import React from "react";
 import { VStack, HStack, Box, Button, Text, ScrollView, Center } from "native-base";
 
 function HomeScreen({ navigation }) {
+  
   return (
     <ScrollView contentContainerStyle={{ margin: 20, padding: 20 }}>
       <Center>
@@ -66,7 +67,7 @@ function HomeScreen({ navigation }) {
           <Text>Horario: De las 18:00 a las 22:30 hrs</Text>
           <Text>Lugar: Bosque Urbano Ficotrece</Text>
           <HStack space={4} justifyContent="center" mt={6}>
-            <Button onPress={() => navigation.navigate('')} colorScheme="blue">
+            <Button onPress={() => navigation.navigate('Market')} colorScheme="blue">
               VER EVENTO
             </Button>
           </HStack>

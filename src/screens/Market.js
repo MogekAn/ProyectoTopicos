@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Importa los íconos desde react-native-vector-icons
 
 function Market({ route }) {
@@ -31,9 +31,27 @@ function Market({ route }) {
             <View style={styles.detailsContainer}>
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.details}>
-                Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que también ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenían pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
-              </Text>
-            </View>
+              🔴MERCADO GASTRONÓMICO 🍔 
+              <br/>
+              ⚡️Descubre la magia nocturna en el 💙 de Aguascalientes‼️
+              <br/>
+              Ven a 🍿♟️🎲‼️
+                                <br/>
+                                Lugar y horario: Viernes Y Sabado de 6:00 a 10:30
+                                <br/>
+                                Bosque urbano FICOTRECE aun costado del velódromo sobre Av heroico colegio militar
+                                <hr color='blue'/>
+                                <br/>
+                                Mas info
+                            </Text>
+                            {/**Redes para mas info*/}
+                            <Icon name="logo-facebook" size={30} color="gray" style={styles.rightIcon} 
+                            onPress={() => Linking.openURL("https://www.facebook.com/profile.php?id=100083598896259&locale=es_LA")}/>
+                            <Icon name="logo-instagram" size={30} color="gray" style={styles.rightIcon} 
+                            onPress={() => Linking.openURL("https://www.instagram.com/Market_nocturno?fbclid=IwY2xjawG6NEtleHRuA2FlbQIxMAABHTA7Yz_hENyMS_UjuHiq0K_Dtb4Tf1q7IahSYtQs3gCfrzpP91aDGYbG4A_aem_hjW0KYQejx5F0xJn4Xoh-A")}/>
+                            <Icon name="logo-tiktok" size={30} color="gray" style={styles.rightIcon} 
+                            onPress={() => Linking.openURL("https://www.tiktok.com/@marketnocturnoags?is_from_webapp=1&sender_device=pc")}/>
+                        </View>
           </View>
         </View>
       </View>

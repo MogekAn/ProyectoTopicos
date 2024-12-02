@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Image } from 'react-native';
 import { Text, VStack, HStack, Button, Box, Pressable } from 'native-base';
-import Market from './Market';
 
 function DirectorioScreen({ navigation }) {
   const [orderBy, setOrderBy] = useState('Reciente');
@@ -99,6 +98,8 @@ function DirectorioScreen({ navigation }) {
                   // Si el evento es "Market Nocturno Ags", navega a la pantalla 'Market'
                   if (item.name === 'Market Nocturno Ags') {
                     navigation.navigate('Market', { event: item });
+                  } else if (item.name === 'KUDAI       ') {
+                    navigation.navigate('Kudai', { event: item });
                   } else {
                     navigation.navigate('EventoDetalle', { event: item });
                   }
