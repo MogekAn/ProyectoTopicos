@@ -17,7 +17,7 @@ function DirectorioScreen({ navigation }) {
     { id: 5, name: 'R&B Yoga    ', category: 'Deportes', image: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F896375103%2F2330402631463%2F1%2Foriginal.20241111-152617?auto=format%2Ccompress&q=75&sharp=10&s=4145ed1137d72543368fc553f07a0ed3' },
     { id: 6, name: 'KUDAI       ', category: 'Conciertos', image: 'https://cdn.arema.dev/live/eventos/13078.jpg' },
     { id: 7, name: 'Feria Nacional de San Marcos 2025', category: 'Ferias', image: 'https://www.laferiadesanmarcos.com/wp-content/uploads/2024/03/feria-nacional-de-san-marcos-2025.jpg' },
-    { id: 8, name: 'Navi -ColeCon', category: 'Tecnología', image: 'https://cdn-az.allevents.in/events8/banners/22522a7dd485c8c96dc07419bd4f5f25d04b099ce6d28201b4286b3e702bd6d8-rimg-w1200-h675-dc02781e-gmir?v=1732426816' },
+    { id: 8, name: 'Navi-Cole Con', category: 'Tecnología', image: 'https://cdn-az.allevents.in/events8/banners/22522a7dd485c8c96dc07419bd4f5f25d04b099ce6d28201b4286b3e702bd6d8-rimg-w1200-h675-dc02781e-gmir?v=1732426816' },
     { id: 9, name: 'TOUR BAHIDORA 2025', category: 'Cultura', image: 'https://cdn-az.allevents.in/events3/banners/84b98958f88d7fe6e9defa479a324c0d3417696da274fbc36d0bd27df887f12b-rimg-w1200-h628-dc4860aa-gmir?v=1731822705' },
     { id: 10, name: 'Before She Dies', category: 'Conciertos', image: 'https://cdn.wegow.com/media/events/emo-n-shit/emo-n-shit-1729807613.250751.1242x2208.png' },
   ];

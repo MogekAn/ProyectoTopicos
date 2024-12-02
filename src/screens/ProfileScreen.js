@@ -1,79 +1,80 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Button, Center, VStack, Alert, Progress, Skeleton, Spinner, Toast, useToast, Text } from 'native-base';
+import React from 'react';
+import { Center, HStack, Button, Text, Image, VStack, useToast } from 'native-base';
+import { useNavigation } from '@react-navigation/native'; // Importa useNavigation
+import Market from './Market';
 
 const ProfileScreen = () => {
-  const [showAlert, setShowAlert] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [userData, setUserData] = useState(null);
   const toast = useToast();
+  const navigation = useNavigation(); // Obtén el objeto de navegación
 
-  useEffect(() => {
-    // Simula la carga de datos del perfil de usuario
-    const loadUserData = async () => {
-      setLoading(true);
-      setProgress(20);
+  const navigateToSection = (section) => {
+    toast.show({
+      title: `Navegando a ${section}`,
+      status: "info",
+      duration: 2000,
+      isClosable: true,
+    });
 
-      // Simulación de progreso
-      setTimeout(() => setProgress(60), 1000);
-      setTimeout(() => setProgress(100), 2000);
-
-      setTimeout(() => {
-        setUserData({
-          name: "Juan Pérez",
-          email: "juan.perez@example.com",
-          bio: "Desarrollador de software apasionado por React Native y el desarrollo de aplicaciones móviles.",
-        });
-        setLoading(false);
-        toast.show({
-          title: "Datos cargados",
-          description: "Los datos del perfil se han cargado correctamente.",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-      }, 3000);
-    };
-
-    loadUserData();
-  }, []);
+    // Navegar a las pantallas correctas
+    if (section === "Guardados") {
+      navigation.navigate("Guardado");  
+    } else if (section === "Favoritos") {
+      navigation.navigate("Favorito");
+    }else if (section === "Eventos cercanos") {
+      navigation.navigate("Cerca");
+    }else if (section === "Editar perfil") {
+      navigation.navigate("Perfil");
+    }
+  };
 
   return (
-    <Center flex={1} px={4}>
-      <VStack space={4} w="100%">
-        
-        {/* Alerta de error */}
-        {showAlert && (
-          <Alert w="100%" status="error" colorScheme="error" onClose={() => setShowAlert(false)}>
-            <Alert.Icon />
-            <Text color="error.700">Hubo un error al cargar los datos</Text>
-          </Alert>
-        )}
+    <Center flex={1} px={4} bg="gray.200"> {/* Fondo gris para toda la página */}
+      {/* Barra superior */}
+      <HStack w="100%" justifyContent="center" alignItems="center" p={4} bg="white" position="absolute" top={10} left={0} right={0} zIndex={1}>
+        <Text fontSize="4xl" h="100%" color="gray.600" fontWeight="bold" textAlign="center">
+          PERFIL
+        </Text>
+        <Button
+          variant="solid"
+          colorScheme="blue"
+          onPress={() => toast.show({ title: "Sesión cerrada", status: "warning" })}
+          position="absolute"
+          right={4}
+        >
+          Cerrar sesión
+        </Button>
+      </HStack>
 
-        {/* Simulación de carga de datos */}
-        {loading ? (
-          <>
-            <Text>Cargando perfil del usuario...</Text>
-            <Progress value={progress} colorScheme="blue" />
-            <Skeleton.Text lines={3} mt={4} />
-            <Skeleton mt={2} h="20" />
-            <Skeleton mt={2} h="10" />
-            <Spinner size="lg" color="blue.500" mt={4} />
-          </>
-        ) : (
-          <>
-         
-            <Box p={4} bg="white" rounded="lg" shadow={1}>
-              <Text fontSize="xl" fontWeight="bold">{userData.name}</Text>
-              <Text color="gray.500">{userData.email}</Text>
-              <Text mt={2}>{userData.bio}</Text>
-            </Box>
-            <Button colorScheme="danger" onPress={() => setShowAlert(true)}>
-              Simular Error
-            </Button>
-          </>
-        )}
-      </VStack>
+
+
+      {/* Opciones horizontales */}
+      <HStack justifyContent="space-between" mt={20} w="100%" flexWrap="wrap">
+        {[ // Opciones horizontales
+          { label: "Guardados", image: require('../../assets/images/Guardados.png') },
+          { label: "Favoritos", image: require('../../assets/images/Favoritos.png') },
+          { label: "Eventos cercanos", image: require('../../assets/images/Cerca.png') },
+          { label: "Editar perfil", image: require('../../assets/images/Perfil.png') },
+        ].map((option, index) => (
+          <VStack
+            key={index}
+            w="23%"  
+            p={4}
+            bg="white"  // Fondo blanco para cada tarjeta
+            rounded="lg"
+            shadow={1}
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            
+            <Text fontSize="lg" fontWeight="bold" mb={2} textAlign="center"> {/* Título arriba de la imagen */}
+              {option.label}
+            </Text>
+            <Image source={option.image} alt={option.label} size="lg" mb={2} /> {/* Imagen en el centro */}
+            <Button onPress={() => navigateToSection(option.label)}>Entrar</Button> {/* Botón debajo de la imagen */}
+          </VStack>
+          
+        ))}
+      </HStack>
     </Center>
   );
 };

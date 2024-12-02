@@ -15,6 +15,9 @@ import ConfigScreen from "./src/screens/ConfigScreen";
 import Competencias from "./src/screens/Competencias";
 import DirectorioScreen from "./src/screens/DirectorioScreen";
 import Market from "./src/screens/Market";
+import Guardado from "./src/screens/Guardado";
+import Favorito from "./src/screens/Favorito";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -39,7 +42,7 @@ export default function App() {
                     alt="Logo"
                     resizeMode="contain"
                     flex={1}
-                    height="1000px"
+                    height="100px"
                     width="200px"
                     ml="2"
                   />
@@ -109,6 +112,20 @@ export default function App() {
             <Tab.Screen 
               name="Market" 
               component={Market} 
+              options={{
+                tabBarButton: () => null, // Oculta el botón de la barra inferior
+              }}
+            />
+            <Tab.Screen 
+              name="Guardado" 
+              component={Guardado} 
+              options={{
+                tabBarButton: () => null, // Oculta el botón de la barra inferior
+              }}
+            />
+            <Tab.Screen 
+              name="Favorito" 
+              component={Favorito} 
               options={{
                 tabBarButton: () => null, // Oculta el botón de la barra inferior
               }}
