@@ -1,25 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Importa los íconos desde react-native-vector-icons
 
 function FNSM({ route }) {
   const { event } = route.params;
 
+  // Estados para los íconos
+  const [isLiked, setIsLiked] = useState(false); // Controla el icono del corazón
+  const [isScheduled, setIsScheduled] = useState(false); // Controla el icono del calendario
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.rowContainer}>
         <View style={styles.imageContainer}>
-        <Image 
-        source={require('../../assets/images/FNSM.png')} // Ruta de la imagen en el proyecto
-        style={styles.image} 
+          <Image 
+            source={require('../../assets/images/FNSM.png')} // Ruta de la imagen en el proyecto
+            style={styles.image} 
           />
         </View>
         
         <View style={styles.textContainer}>
           {/* Contenedor para los íconos */}
           <View style={styles.iconRow}>
-            <Icon name="heart-outline" size={30} color="red" style={styles.leftIcon} />
-            <Icon name="calendar-outline" size={30} color="black" style={styles.rightIcon} />
+            {/* Icono de corazón */}
+            <Icon 
+              name={isLiked ? "heart" : "heart-outline"} 
+              size={30} 
+              color="red" 
+              style={styles.leftIcon} 
+              onPress={() => setIsLiked(!isLiked)} // Alterna el estado
+            />
+            {/* Icono de calendario */}
+            <Icon 
+              name={isScheduled ? "calendar" : "calendar-outline"} 
+              size={30} 
+              color="black" 
+              style={styles.rightIcon} 
+              onPress={() => setIsScheduled(!isScheduled)} // Alterna el estado
+            />
           </View>
 
           {/* Nueva sección con HStack */}
@@ -32,23 +50,22 @@ function FNSM({ route }) {
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.details}>
                 Del 19 de abril al 11 de mayo de 2025  
-              <br/>
-              En Aguascalientes
-              <br/>
-              Próximamente más detalles
-
-                                <hr color='blue'/>
-                                <br/>
-                                Mas info
-                            </Text>
-                            {/**Redes para mas info*/}
-                            <Icon name="logo-facebook" size={30} color="gray" style={styles.rightIcon} 
-                            onPress={() => Linking.openURL("https://www.facebook.com/ferianacionaldesanmarcosoficial")}/>
-                            <Icon name="logo-instagram" size={30} color="gray" style={styles.rightIcon} 
-                            onPress={() => Linking.openURL("https://www.instagram.com/fnsm_oficial/")}/>
-                            <Icon name="logo-tiktok" size={30} color="gray" style={styles.rightIcon} 
-                            onPress={() => Linking.openURL("https://www.tiktok.com/@fnsm_oficial?is_from_webapp=1&sender_device=pc")}/>
-                        </View>
+                <br />
+                En Aguascalientes
+                <br />
+                Próximamente más detalles
+                <hr color='blue'/>
+                <br />
+                Mas info
+              </Text>
+              {/** Redes para más info */}
+              <Icon name="logo-facebook" size={30} color="gray" style={styles.rightIcon} 
+                onPress={() => Linking.openURL("https://www.facebook.com/ferianacionaldesanmarcosoficial")} />
+              <Icon name="logo-instagram" size={30} color="gray" style={styles.rightIcon} 
+                onPress={() => Linking.openURL("https://www.instagram.com/fnsm_oficial/")} />
+              <Icon name="logo-tiktok" size={30} color="gray" style={styles.rightIcon} 
+                onPress={() => Linking.openURL("https://www.tiktok.com/@fnsm_oficial?is_from_webapp=1&sender_device=pc")} />
+            </View>
           </View>
         </View>
       </View>

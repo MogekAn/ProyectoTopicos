@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Importa los íconos desde react-native-vector-icons
 
 function Kudai({ route }) {
     const { event } = route.params;
+
+    // Estados para los íconos
+    const [isLiked, setIsLiked] = useState(false); // Controla el icono del corazón
+    const [isScheduled, setIsScheduled] = useState(false); // Controla el icono del calendario
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -18,8 +22,22 @@ function Kudai({ route }) {
                 <View style={styles.textContainer}>
                     {/* Contenedor para los íconos */}
                     <View style={styles.iconRow}>
-                        <Icon name="heart-outline" size={30} color="red" style={styles.leftIcon} />
-                        <Icon name="calendar-outline" size={30} color="black" style={styles.rightIcon} />
+                        {/* Icono de corazón */}
+                        <Icon 
+                            name={isLiked ? "heart" : "heart-outline"} 
+                            size={30} 
+                            color="red" 
+                            style={styles.leftIcon} 
+                            onPress={() => setIsLiked(!isLiked)} // Alterna el estado
+                        />
+                        {/* Icono de calendario */}
+                        <Icon 
+                            name={isScheduled ? "calendar" : "calendar-outline"} 
+                            size={30} 
+                            color="black" 
+                            style={styles.rightIcon} 
+                            onPress={() => setIsScheduled(!isScheduled)} // Alterna el estado
+                        />
                     </View>
 
                     {/* Nueva sección con HStack */}
@@ -32,21 +50,21 @@ function Kudai({ route }) {
                             <Text style={styles.title}>{event.name}</Text>
                             <Text style={styles.details}>
                                 Fecha: 7 de diciembre
-                                <br/>
+                                <br />
                                 Hora: 9:00 pm
-                                <br/>
+                                <br />
                                 Lugar: Auditorio Dimo
                                 <hr color='blue'/>
-                                <br/>
+                                <br />
                                 Mas info
                             </Text>
-                            {/**Redes para mas info*/}
+                            {/** Redes para más info */}
                             <Icon name="logo-facebook" size={30} color="gray" style={styles.rightIcon} 
-                            onPress={() => Linking.openURL("https://www.facebook.com/kudai")}/>
+                                onPress={() => Linking.openURL("https://www.facebook.com/kudai")} />
                             <Icon name="logo-instagram" size={30} color="gray" style={styles.rightIcon} 
-                            onPress={() => Linking.openURL("https://www.instagram.com/kudaiofficial/")}/>
+                                onPress={() => Linking.openURL("https://www.instagram.com/kudaiofficial/")} />
                             <Icon name="ticket" size={30} color="gray" style={styles.rightIcon} 
-                            onPress={() => Linking.openURL("https://arema.mx/evento/13078")}/>
+                                onPress={() => Linking.openURL("https://arema.mx/evento/13078")} />
                         </View>
                     </View>
                 </View>

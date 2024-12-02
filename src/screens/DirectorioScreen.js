@@ -10,14 +10,14 @@ function DirectorioScreen({ navigation }) {
   const categorias = ['Conciertos', 'Anime', 'Teatro', 'Deportes', 'Cultura', 'Ferias', 'Tecnología'];
   const eventos = [
     { id: 1, name: 'Winter Beer Fest 2024', category: 'Cultura', image: 'https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-6/466780242_575990011617597_1296820051847026476_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Y9BKfd9PAPUQ7kNvgEB4AOJ&_nc_zt=23&_nc_ht=scontent.fagu3-1.fna&_nc_gid=A70ImpGLgBhTVi1-IClDzDE&oh=00_AYAwYS8cs8gq_5HXVm2OS98Afo8PAldbT5Fd00s9pv77-w&oe=67529497' },
-    { id: 2, name: 'Star-Con Edicion 17', category: 'Anime', image: 'https://cdn-az.allevents.in/events5/banners/2b7153db7ddc3a8f2e055d733d72e97e28e906a3090ffa02e654d649551e11f3-rimg-w1200-h675-dc2c6808-gmir?v=1732158721' },
+    { id: 2, name: 'Star-Con Edicion 17', category: 'Anime', image: 'https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-6/468391126_1125923858905644_7957278738722550313_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Esz2OK3Jdi8Q7kNvgGd_Y4S&_nc_zt=23&_nc_ht=scontent.fagu3-1.fna&_nc_gid=AMVfFDc-ozLxKxGN9dDDnt_&oh=00_AYDnIBh6IvWtE6TJncmL9axVEe5LIOI0fIG7xNPAHeL6lw&oe=6753B2F6' },
     { id: 3, name: 'Market Nocturno Ags', category: 'Cultura', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPvid-_USxy0e-mOyFTHFxUTDt1WOemXS0OA&s' },
     { id: 4, name: 'GRAN CONCIERTO SINFÓNICO DE NAVIDAD Y AÑO NUEVO 2024', category: 'Teatro', image: 'https://www.showticket.com.mx/uplimage/BANNERSHOWTICKET.png' },
     { id: 5, name: 'R&B Yoga    ', category: 'Deportes', image: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F896375103%2F2330402631463%2F1%2Foriginal.20241111-152617?auto=format%2Ccompress&q=75&sharp=10&s=4145ed1137d72543368fc553f07a0ed3' },
     { id: 6, name: 'KUDAI       ', category: 'Conciertos', image: 'https://cdn.arema.dev/live/eventos/13078.jpg' },
     { id: 7, name: 'Feria Nacional de San Marcos 2025', category: 'Ferias', image: 'https://www.laferiadesanmarcos.com/wp-content/uploads/2024/03/feria-nacional-de-san-marcos-2025.jpg' },
-    { id: 8, name: 'Navi-Cole Con', category: 'Tecnología', image: 'https://cdn-az.allevents.in/events8/banners/22522a7dd485c8c96dc07419bd4f5f25d04b099ce6d28201b4286b3e702bd6d8-rimg-w1200-h675-dc02781e-gmir?v=1732426816' },
-    { id: 9, name: 'TOUR BAHIDORA 2025', category: 'Cultura', image: 'https://cdn-az.allevents.in/events3/banners/84b98958f88d7fe6e9defa479a324c0d3417696da274fbc36d0bd27df887f12b-rimg-w1200-h628-dc4860aa-gmir?v=1731822705' },
+    { id: 8, name: 'Navi-Cole Con', category: 'Tecnología', image: 'https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-6/463043521_875570204679657_6895066698598910254_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=75d36f&_nc_ohc=3GJ3pwJqofUQ7kNvgFyaBPZ&_nc_zt=23&_nc_ht=scontent.fagu3-1.fna&_nc_gid=A9ndHQ5NP8BErb2JCRMjy5e&oh=00_AYCcmVDh-u4DicN2ETTzRh-Gs_XB97VHPomT4g83hM6R7w&oe=67539981' },
+    { id: 9, name: 'TOUR BAHIDORA 2025', category: 'Cultura', image: 'https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-6/463975041_856592253312733_5315332014649743437_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=75d36f&_nc_ohc=gcVtrnGfE0gQ7kNvgEHL67G&_nc_zt=23&_nc_ht=scontent.fagu3-1.fna&_nc_gid=Ahmg5MCRZ3qPcu2vlnO2ILs&oh=00_AYAs3kDAmIUwNN-9j3_V70-3j-rwX_LwwbvFDTZCz0QEoA&oe=6753C70B' },
     { id: 10, name: 'Before She Dies', category: 'Conciertos', image: 'https://cdn.wegow.com/media/events/emo-n-shit/emo-n-shit-1729807613.250751.1242x2208.png' },
   ];
 

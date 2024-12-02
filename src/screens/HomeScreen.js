@@ -67,7 +67,7 @@ function HomeScreen({ navigation }) {
           <Text>Horario: De las 18:00 a las 22:30 hrs</Text>
           <Text>Lugar: Bosque Urbano Ficotrece</Text>
           <HStack space={4} justifyContent="center" mt={6}>
-            <Button onPress={() => navigation.navigate('Market')} colorScheme="blue">
+            <Button colorScheme="blue">
               VER EVENTO
             </Button>
           </HStack>
