@@ -34,7 +34,7 @@ function HomeScreen({ navigation }) {
 
         <Box bg="green.100" p="4" rounded="lg" shadow={2} flex={1}>
           <Text fontSize="lg" fontWeight="bold">
-            Concierto Navidad
+            GRAN CONCIERTO SINFÓNICO DE NAVIDAD Y AÑO NUEVO 2024
           </Text>
           <img 
           src='https://www.showticket.com.mx/uplimage/BANNERSHOWTICKET.png'
@@ -106,16 +106,6 @@ function HomeScreen({ navigation }) {
             </Button>
           </HStack>
         </Box>
-      </HStack>
-
-      {/* Botones para cambiar de página */}
-      <HStack space={4} justifyContent="center" mt={6}>
-        <Button onPress={() => navigation.goBack()} colorScheme="gray">
-          Página Anterior
-        </Button>
-        <Button onPress={() => navigation.navigate('Notification')} colorScheme="blue">
-          Página Siguiente
-        </Button>
       </HStack>
     </ScrollView>
   );
