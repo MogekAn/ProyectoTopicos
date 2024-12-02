@@ -100,7 +100,9 @@ function DirectorioScreen({ navigation }) {
                     navigation.navigate('Market', { event: item });
                   } else if (item.name === 'KUDAI       ') {
                     navigation.navigate('Kudai', { event: item });
-                  } else {
+                  } else if (item.name === 'Feria Nacional de San Marcos 2025') {
+                    navigation.navigate('FNSM', { event: item });
+                  }else {
                     navigation.navigate('EventoDetalle', { event: item });
                   }
                 }}

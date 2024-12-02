@@ -16,6 +16,7 @@ import Competencias from "./src/screens/Competencias";
 import DirectorioScreen from "./src/screens/DirectorioScreen";
 import Market from "./src/screens/Market";
 import Kudai from "./src/screens/Kudai"
+import FNSM from "./src/screens/FNSM";
 import Guardado from "./src/screens/Guardado";
 import Favorito from "./src/screens/Favorito";
 
@@ -120,6 +121,13 @@ export default function App() {
             <Tab.Screen 
               name="Kudai" 
               component={Kudai} 
+              options={{
+                tabBarButton: () => null, // Oculta el botón de la barra inferior
+              }}
+            />
+            <Tab.Screen 
+              name="FNSM" 
+              component={FNSM} 
               options={{
                 tabBarButton: () => null, // Oculta el botón de la barra inferior
               }}
