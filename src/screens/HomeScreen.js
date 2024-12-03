@@ -54,7 +54,7 @@ function HomeScreen({ navigation }) {
         </Box>
       </HStack>
 
-      {/* Últimos tres eventos */}
+      {/* Tres eventos */}
       <HStack space={4} justifyContent="space-between" mb={6}>
         <Box bg="purple.100" p="4" rounded="lg" shadow={2} flex={1}>
           <Text fontSize="lg" fontWeight="bold">Market Nocturno</Text>
@@ -125,6 +125,50 @@ function HomeScreen({ navigation }) {
           </HStack>
         </Box>
       </HStack>
+      
+      {/* Últimos dos eventos 
+      <HStack space={4} justifyContent="space-between" mb={6}>
+        <Box bg="blue.100" p="4" rounded="lg" shadow={2} flex={1}>
+          <Text fontSize="lg" fontWeight="bold">Winter Beer Fest</Text>
+          <img
+            src="https://scontent.fagu3-1.fna.fbcdn.net/v/t39.30808-6/466780242_575990011617597_1296820051847026476_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Y9BKfd9PAPUQ7kNvgEB4AOJ&_nc_zt=23&_nc_ht=scontent.fagu3-1.fna&_nc_gid=A70ImpGLgBhTVi1-IClDzDE&oh=00_AYAwYS8cs8gq_5HXVm2OS98Afo8PAldbT5Fd00s9pv77-w&oe=67529497"
+            alt="Winter"
+            style={{ width: "100%", height: "auto" }}
+          />
+          <hr />
+          <Text>
+            📅 07 de diciembre
+          {"\n"} 
+          ⌚ De las 14:00 a las 23:30 hrs
+          {"\n"}
+          📍 Av. Francisco I. Madero #347, zona Centro, Quinto Barrio</Text>
+          <HStack space={4} justifyContent="center" mt={6}>
+            <Button colorScheme="blue">
+              VER EVENTO
+            </Button>
+          </HStack>
+        </Box>
+
+        <Box bg="green.100" p="4" rounded="lg" shadow={2} flex={1}>
+          <Text fontSize="lg" fontWeight="bold">GRAN CONCIERTO SINFÓNICO DE NAVIDAD</Text>
+          <img
+            src="https://www.showticket.com.mx/uplimage/BANNERSHOWTICKET.png"
+            alt="ConciertoNavidad"
+            style={{ width: "100%", height: "auto" }}
+          />
+          <hr />
+          <Text>
+            📅 Sábado 21 de Diciembre 2024
+            {"\n"}
+          ⌚ 8:00 P.M.
+          {"\n"}
+          📍 TEATRO AGUASCALIENTES </Text>
+          <HStack space={4} justifyContent="center" mt={6}>
+            <Button colorScheme="blue">VER EVENTO</Button>
+          </HStack>
+        </Box>
+      </HStack> */}
+
     </ScrollView>
   );
 }
