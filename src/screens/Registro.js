@@ -40,8 +40,6 @@ function Registro() {
             >
               Register
             </Heading>
-            
-            
 
             <FormControl isRequired>
               <VStack space={4}>
