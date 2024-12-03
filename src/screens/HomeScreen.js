@@ -1,10 +1,8 @@
 import React from "react";
 import { VStack, HStack, Box, Button, Text, ScrollView, Center } from "native-base";
 
-
 function HomeScreen({ navigation }) {
   
-
   return (
     <ScrollView contentContainerStyle={{ margin: 20, padding: 20 }}>
       <Center>
@@ -23,9 +21,12 @@ function HomeScreen({ navigation }) {
             style={{ width: "100%", height: "auto" }}
           />
           <hr />
-          <Text>Fecha: 07 de diciembre</Text>
-          <Text>Horario: De las 14:00 a las 23:30 hrs</Text>
-          <Text>Lugar: Av. Francisco I. Madero #347, zona Centro, Quinto Barrio</Text>
+          <Text>
+            📅 07 de diciembre
+          {"\n"} 
+          ⌚ De las 14:00 a las 23:30 hrs
+          {"\n"}
+          📍 Av. Francisco I. Madero #347, zona Centro, Quinto Barrio</Text>
           <HStack space={4} justifyContent="center" mt={6}>
             <Button colorScheme="blue">
               VER EVENTO
@@ -41,8 +42,12 @@ function HomeScreen({ navigation }) {
             style={{ width: "100%", height: "auto" }}
           />
           <hr />
-          <Text>Fecha: 20 de diciembre, 2024</Text>
-          <Text>Lugar: Centro de Convenciones</Text>
+          <Text>
+            📅 Sábado 21 de Diciembre 2024
+            {"\n"}
+          ⌚ 8:00 P.M.
+          {"\n"}
+          📍 TEATRO AGUASCALIENTES </Text>
           <HStack space={4} justifyContent="center" mt={6}>
             <Button colorScheme="blue">VER EVENTO</Button>
           </HStack>
@@ -59,9 +64,12 @@ function HomeScreen({ navigation }) {
             style={{ width: "100%", height: "auto" }}
           />
           <hr />
-          <Text>Fecha: Sábados y viernes</Text>
-          <Text>Horario: De las 18:00 a las 22:30 hrs</Text>
-          <Text>Lugar: Bosque Urbano Ficotrece</Text>
+          <Text>📅 Viernes Y Sabado 
+                {"\n"} 
+                ⌚ De 6:00pm a 10:30pm
+                {"\n"}
+                📍 Bosque urbano FICOTRECE a un costado del velódromo sobre Av heroico colegio militar
+                </Text>
           <HStack space={4} justifyContent="center" mt={6}>
           <Button 
             onPress={() => navigation.navigate('Market', { event: { name: 'Market Nocturno' } })} 
@@ -79,7 +87,10 @@ function HomeScreen({ navigation }) {
             alt="FNSM25"
           />
           <hr />
-          <Text>Fecha: Del 19 de abril al 11 de Mayo, 2025</Text>
+          <Text>📅 Del 19 de abril al 11 de Mayo, 2025
+          {"\n"}
+          🔜 Próximamente más detalles
+          </Text>
           <HStack space={4} justifyContent="center" mt={6}>
           <Button 
             onPress={() => navigation.navigate('FNSM', { event: { name: 'Feria Nacional de San Marcos 2025' } })} 
@@ -98,9 +109,12 @@ function HomeScreen({ navigation }) {
             style={{ width: "100%", height: "auto" }}
           />
           <hr />
-          <Text>Fecha: 07 de diciembre</Text>
-          <Text>Horario: 20:00 hrs</Text>
-          <Text>Lugar: Teatro Dimo</Text>
+          <Text>
+            📅 7 de diciembre
+                {"\n"}
+            ⌚ 9:00 pm
+                {"\n"}
+            📍 Auditorio Dimo</Text>
           <HStack space={4} justifyContent="center" mt={6}>
           <Button 
             onPress={() => navigation.navigate('Kudai', { event: { name: 'Kudai' } })} 

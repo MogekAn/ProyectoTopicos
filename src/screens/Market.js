@@ -43,11 +43,17 @@ function Market({ route }) {
             <View style={styles.detailsContainer}>
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.details}>
-                🔴MERCADO GASTRONÓMICO 🍔
-                ⚡️Descubre la magia nocturna en el 💙 de Aguascalientes‼️
-                Ven a 🍿♟️🎲‼️
-                Lugar y horario: Viernes Y Sabado de 6:00 a 10:30
-                Bosque urbano FICOTRECE aun costado del velódromo sobre Av heroico colegio militar
+                🔴 MERCADO GASTRONÓMICO 🍔
+                {"\n"}
+                ⚡️ Descubre la magia nocturna en el 💙 de Aguascalientes‼️
+                {"\n"}
+                Ven a 🍿♟️🎲 ‼
+                {"\n"}
+                📅 Viernes Y Sabado 
+                {"\n"} 
+                ⌚ De 6:00pm a 10:30pm
+                {"\n"}
+                📍 Bosque urbano FICOTRECE a un costado del velódromo sobre Av heroico colegio militar
               </Text>
 
               {/* Línea azul y leyenda "Más info" */}

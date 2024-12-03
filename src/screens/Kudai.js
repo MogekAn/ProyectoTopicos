@@ -47,11 +47,11 @@ function Kudai({ route }) {
             <View style={styles.detailsContainer}>
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.details}>
-                Fecha: 7 de diciembre
+              📅 7 de diciembre
                 {"\n"}
-                Hora: 9:00 pm
+              ⌚ 9:00 pm
                 {"\n"}
-                Lugar: Auditorio Dimo
+              📍 Lugar: Auditorio Dimo
               </Text>
 
               {/* Línea azul y leyenda "Más info" */}
