@@ -1,212 +1,125 @@
-import { AlertDialog, Menu, Popover, Tooltip, Modal, Box, VStack, Text, Pressable, HStack, Icon, Divider, Center, useColorModeValue, Switch, Button, Badge } from 'native-base';
 import React from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
+function CondicionesyPoliticas() {
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.content}>
+        {/* Título principal */}
+        <Text style={styles.title}>Términos y Condiciones</Text>
+        <Text style={styles.updateDate}>Última actualización: 13/10/2024</Text>
 
+        {/* Secciones */}
+        <Text style={styles.text}>
+          Bienvenido a Radar Eventos Aguascalientes. Estos Términos y Condiciones regulan el acceso y uso de nuestro sitio web, 
+          cuyo objetivo principal es promocionar eventos próximos de cualquier tipo en el estado de Aguascalientes. Al utilizar el sitio web, 
+          aceptas los siguientes términos y condiciones. Si no estás de acuerdo con alguno de ellos, te pedimos que no utilices el sitio.
+        </Text>
 
-const ConfigurationScreen = () => {
-    const [isNotificationsEnabled, setIsNotificationsEnabled] = React.useState(false); 
-    const [isOpNotfications, setIsOpNotifications] = React.useState(false);
-    const [showModal, setShowModal] = React.useState(false);
-    const [isDeleteAlertifEnabled, setDeleteAlertEnabled] = React.useState(false);
+        <Text style={styles.sectionTitle}>1. Aceptación de los Términos</Text>
+        <Text style={styles.text}>
+          Al acceder a Radar Eventos Aguascalientes, confirmas que has leído, comprendido y aceptado estos Términos y Condiciones. 
+          Estos términos podrán ser modificados en cualquier momento sin previo aviso, por lo que te sugerimos revisarlos periódicamente..
+        </Text>
 
-    const toggleSwitch = () => {
-        
-        setIsNotificationsEnabled(prev => !prev);
-        
-        if (!isNotificationsEnabled) {
-            setIsOpNotifications(true);
-        }
-    };
+        <Text style={styles.sectionTitle}>2. Descripción del Servicio</Text>
+        <Text style={styles.text}>
+          Radar Eventos Aguascalientes es una plataforma online dedicada a la promoción de eventos que se llevarán a cabo en el estado de Aguascalientes. Proporcionamos a los usuarios información sobre fechas, lugares y detalles de eventos de diversa índole (culturales, deportivos, musicales, etc.). 
+          No somos responsables de la organización o ejecución de los eventos, y la información proporcionada puede estar sujeta a cambios por parte de los organizadores.
+        </Text>
 
-    const onCloseNotif = () => setIsOpNotifications(false)
-    const cancelRef = React.useRef(null);
-    const onCloseDeleteAlert = () => setDeleteAlertEnabled(false);
+        <Text style={styles.sectionTitle}>3. Registro de Usuario</Text>
+        <Text style={styles.text}>
+          Para acceder a ciertas funcionalidades del sitio, es posible que se te pida crear una cuenta proporcionando datos 
+          personales como nombre, correo electrónico, entre otros. Al hacerlo, te comprometes a:
+        </Text>
+        <Text style={styles.bulletPoint}>- Proporcionar información verídica y actualizada.</Text>
+        <Text style={styles.bulletPoint}>- Mantener la confidencialidad de tu cuenta y contraseña.</Text>
+        <Text style={styles.bulletPoint}>- Informarnos inmediatamente si detectas algún uso no autorizado de tu cuenta.</Text>
 
-    const bgColor = useColorModeValue('coolGray.100', 'coolGray.800');
-    const textColor = useColorModeValue('light.text.900', 'dark.text.100');
-    const iconColor = useColorModeValue('dar.icon.200', 'white');
-    const boxColor = useColorModeValue('white', 'coolGray.700');
-    const borderColor = useColorModeValue('muted.300', 'darkBlue.800');
-    return (
-        <Center flex={1} bg={bgColor}>
-            <Box
-                bg={boxColor}
-                px={4}
-                py={6}
-                safeArea w="80%"
-                maxW={400}
-                borderLeftWidth={1}
-                borderRightWidth={1}
-                borderLeftColor={borderColor}
-                borderRightColor={borderColor}
-                borderRadius={10}
-                Boxshadow={3}
-            >
-                <Text fontSize="xl" fontWeight="bold" mb={4}>
-                    Configuración
-                </Text>
-                <VStack space={4}>
-                    {/* Notificaciones */}
-                    <HStack alignItems="center"
-                        justifyContent="space-between"
-                    >
-                        <HStack alignItems="center"
-                            space={2}
-                        >
-                            <Text fontSize="md">Notificaciones</Text>
-                            <Switch
-                                onValueChange={toggleSwitch}  
-                                isChecked={isNotificationsEnabled}
-                            />
-                        </HStack>
-                        {/* Aquí irá el Popover */}
-                        <AlertDialog leastDestructiveRef={cancelRef} isOpen={isOpNotfications} onClose={onCloseNotif}>
-                            <AlertDialog.Content>
-                                <AlertDialog.CloseButton />
-                                <AlertDialog.Header>Notificaciones</AlertDialog.Header>
-                                <AlertDialog.Body>
-                                    Se enviarán notificaciones a partir de ahora.
-                                </AlertDialog.Body>
-                                <AlertDialog.Footer>
-                                    <Button.Group space={2}>
-                                        <Button colorScheme="success" onPress={onCloseNotif}>
-                                            Aceptar
-                                        </Button>
-                                    </Button.Group>
-                                </AlertDialog.Footer>
-                            </AlertDialog.Content>
-                        </AlertDialog>
-                        <Popover trigger={triggerProps => {
-                            return <Pressable {...triggerProps}>
-                                <Icon as={MaterialIcons} name="info-outline" size="md" color={iconColor} />
-                            </Pressable>;
-                        }}>
-                            <Popover.Content accessibilityLabel="Información" w="130"
-                            >
-                                <Popover.Arrow />
-                                <Popover.Header
-                                >Información</Popover.Header>
-                                <Popover.Body>
-                                    Activa las notificaciones
-                                </Popover.Body>
-                            </Popover.Content>
-                        </Popover>
-                    </HStack>
-                    <Divider />
-                    {/* Opciones avanzadas */}
-                    <HStack justifyContent="space-between" alignItems="center">
-                        <Text fontSize="md">Opciones avanzadas</Text>
-                        <Menu shadow={2} w="190" trigger={triggerProps => {
-                            return <Pressable accessibilityLabel="More options menu" {...triggerProps}>
-                                <Icon as={MaterialIcons} name="more-vert" size="md" color={iconColor} />
-                            </Pressable>;
-                        }}>
-                            <Menu.Item>Historial</Menu.Item>
-                            <Menu.Item>Ir a perfil</Menu.Item>
-                            <Menu.Item>Opcion algo</Menu.Item>
-                            <Menu.Item>Restaurar configuraciones</Menu.Item>
-                            <Menu.Item>No se</Menu.Item>
-                            <Menu.Item isDisabled>Item Prieto</Menu.Item>
-                        </Menu>
-                    </HStack>
-                    <Divider />
-                    {/* Información general */}
-                    <HStack justifyContent="space-between" alignItems="center">
-                        <Pressable
-                            onPress={() => setShowModal(true)}>
-                            <Text fontSize="md">Información general</Text>
-                        </Pressable>
-                        <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-                            <Modal.Content maxWidth="400px">
-                                <Modal.CloseButton />
-                                <Modal.Header>Información general</Modal.Header>
-                                <Modal.Body>
-                                    <VStack space={2}>
-                                        <Text>Esta pantalla fue creada por el equipo 4:</Text>
-                                        <Text>Jose Sael Lopez Carrillo</Text>
-                                        <Text>Alan Eduardo Guevara Hernandez</Text>
-                                        <Text>Liliana Alejandra Bonilla Salas</Text>
-                                        <Text>Michelle Guadalupe Villagomez Lopez</Text>
-                                        <Text>Cesar de Jesus Alvarez Ortiz</Text>
-                                    </VStack>
-                                </Modal.Body>
-                                <Modal.Footer>
-                                    <Button.Group space={2}>
-                                        <Button variant="ghost" colorScheme="blueGray" onPress={() => {
-                                            setShowModal(false);
-                                        }}>
-                                            Cerrar
-                                        </Button>
-                                    </Button.Group>
-                                </Modal.Footer>
-                            </Modal.Content>
-                        </Modal>
+        <Text style={styles.sectionTitle}>4. Condiciones de Uso</Text>
+        <Text style={styles.text}>
+          Te comprometes a utilizar el sitio de manera adecuada y conforme a la ley. Está prohibido:
+        </Text>
+        <Text style={styles.bulletPoint}>- Usar el sitio para actividades ilícitas, fraudulentas o malintencionadas.</Text>
+        <Text style={styles.bulletPoint}>- Publicar, transmitir o compartir contenido ofensivo, difamatorio o inapropiado.</Text>
+        <Text style={styles.bulletPoint}>- Interferir con el funcionamiento del sitio web o intentar obtener acceso no autorizado a los servidores.</Text>
 
-                        <Tooltip label="Presiona para ver informacion interesante" openDelay={5}
-                            bg={"blue.600"} color={textColor}
-                            placement='left'
-                        >
-                            <Pressable>
-                                <Icon as={MaterialIcons} name="help-outline" size="md" color={iconColor} />
-                            </Pressable>
-                        </Tooltip>
-                    </HStack>
-                    <Divider />
+        <Text style={styles.sectionTitle}>5. Contenido de Terceros</Text>
+        <Text style={styles.text}>
+          Radar Eventos Aguascalientes puede incluir enlaces o contenido proporcionado por terceros (organizadores de eventos, patrocinadores, etc.). 
+          No controlamos ni nos responsabilizamos por el contenido, exactitud o actualización de estos sitios o información externa. Al acceder a dichos enlaces, aceptas que es bajo tu propio riesgo.
+        </Text>
 
-                    {/*para segundo dia*/}
-                    {/* Detalles adicionales WIP */}
-                    <Pressable>
-                        <Text fontSize="md" color="blue.500">
-                            Detalles adicionales <Badge bg={"blue.500"} borderRadius={20}>WIP</Badge>
-                        </Text>
-                    </Pressable>
-                    {/* Aquí irá el Modal */}
+        <Text style={styles.sectionTitle}>6. Propiedad Intelectual</Text>
+        <Text style={styles.text}>
+          El contenido publicado en Radar Eventos Aguascalientes, incluyendo logotipos, textos, gráficos, imágenes y software, está protegido por derechos de propiedad intelectual. 
+          Está prohibido reproducir, modificar o distribuir este contenido sin nuestro consentimiento previo por escrito.
+        </Text>
 
+        <Text style={styles.sectionTitle}>7. Responsabilidad de Radar Eventos Aguascalientes</Text>
+        <Text style={styles.text}>
+        </Text>
+        <Text style={styles.bulletPoint}>- Exactitud de la Información: Nos esforzamos por mantener la información lo más actualizada y precisa posible, pero no garantizamos la exactitud, integridad o actualidad del contenido de los eventos publicados.</Text>
+        <Text style={styles.bulletPoint}>- Eventos Cancelados o Modificados: No somos responsables de cancelaciones, cambios de horario, modificaciones en el lugar o cualquier otro aspecto relacionado con los eventos.</Text>
+        <Text style={styles.bulletPoint}>- Disponibilidad del Servicio: No garantizamos que el sitio esté disponible de manera continua o que esté libre de errores. Nos reservamos el derecho de suspender temporalmente el servicio para realizar mantenimiento o mejoras sin previo aviso.</Text>
 
-                    
-                    <Pressable
-                        bg="danger.600"
-                        rounded="lg"
-                        _pressed={{
-                            bg: "danger.700",
-                            opacity: 0.8
-                        }}
-                        alignSelf={"center"}
-                        px={4}
-                        py={1}
-                        marginTop={10}
-                        onPress={() => setDeleteAlertEnabled(!isDeleteAlertifEnabled)}
-                    >
-                        <Text fontSize="md" color="white">
-                            Eliminar cuenta
-                        </Text>
-                    </Pressable>
-                    <AlertDialog leastDestructiveRef={cancelRef} isOpen={isDeleteAlertifEnabled} onClose={onCloseDeleteAlert}>
-                        <AlertDialog.Content>
-                            <AlertDialog.CloseButton />
-                            <AlertDialog.Header>Eliminar cuenta</AlertDialog.Header>
-                            <AlertDialog.Body>
-                                ¿Estás seguro de que deseas eliminar tu cuenta?
-                            </AlertDialog.Body>
-                            <AlertDialog.Footer>
-                                <Button.Group space={2}>
-                                    <Button variant="unstyled" colorScheme="coolGray" onPress={onCloseDeleteAlert} ref={cancelRef}>
-                                        Cancelar
-                                    </Button>
-                                    <Button colorScheme="danger" onPress={onCloseDeleteAlert}>
-                                        Eliminar
-                                    </Button>
-                                </Button.Group>
-                            </AlertDialog.Footer>
-                        </AlertDialog.Content>
-                    </AlertDialog>
+        <Text style={styles.sectionTitle}>8. Política de Privacidad</Text>
+        <Text style={styles.text}>
+        El manejo de tus datos personales está sujeto a nuestra Política de Privacidad, la cual detalla cómo recopilamos, utilizamos y protegemos tu información. 
+        Te recomendamos revisarla para comprender mejor nuestras prácticas.
+        </Text>
 
+        <Text style={styles.title}>Al utilizar Radar Eventos Aguascalientes, aceptas los términos aquí expuestos. Si en cualquier momento no estás de acuerdo con ellos, debes dejar de usar el sitio web.</Text>
+      </View>
+    </ScrollView>
+  );
+}
 
-                </VStack>
-            </Box>
-        </Center>
-    );
-};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 25,
+    paddingVertical: 20,
+  },
+  content: {
+    backgroundColor: '#ffffff',
+    padding: 15,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  updateDate: {
+    fontSize: 12,
+    color: '#6c757d',
+    textAlign: 'center',
+    marginBottom: 15,
+  },
+  text: {
+    fontSize: 14,
+    color: '#000000',
+    lineHeight: 22,
+    textAlign: 'justify',
+    marginBottom: 15,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000000',
+    marginTop: 15,
+    marginBottom: 10,
+  },
+  bulletPoint: {
+    fontSize: 14,
+    color: '#000000',
+    lineHeight: 22,
+    marginLeft: 15,
+    marginBottom: 8,
+  },
+});
 
-export default ConfigurationScreen;
+export default CondicionesyPoliticas;
