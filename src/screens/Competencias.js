@@ -1,183 +1,90 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, Button, ScrollView, SectionList, FlatList } from 'react-native';
+import React from 'react';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
-const Competencias = () => {
-  const [isStatusBarHidden, setIsStatusBarHidden] = useState(false);
-
-  const toggleStatusBar = () => {
-    setIsStatusBarHidden(!isStatusBarHidden);
-  };
-
-  const sections = [
-    {
-      title: 'Habilidades',
-      data: [
-        'Resolución de problemas',
-        'Trabajo en equipo',
-        'Pensamiento crítico',
-        'Gestión del tiempo',
-        'Adaptabilidad',
-      ],
-    },
-    {
-      title: 'Conocimientos',
-      data: [
-        'Programación en múltiples lenguajes (JavaScript, Python, Java)',
-        'Diseño de bases de datos',
-        'Desarrollo Frontend (React, Angular)',
-        'Desarrollo Backend (Node.js, Flask, Django)',
-        'Control de versiones con Git/GitHub',
-        'Metodologías ágiles (Scrum, Kanban)',
-        'Pruebas unitarias y automatizadas',
-        'Despliegue en la nube (AWS, Azure, GCP)',
-        'Seguridad de aplicaciones',
-        'Optimización de rendimiento',
-        'CI/CD (Integración y Entrega Continuas)',
-      ],
-    },
-  ];
-
-  const projects = [
-    { id: '1', name: 'Portfolio Web' },
-    { id: '2', name: 'Tienda en Línea' },
-    { id: '3', name: 'Blog Personal' },
-    { id: '4', name: 'Sistema de Reservaciones' },
-    { id: '5', name: 'Aplicación de Tareas' },
-  ];
-
+function SobreNosotros() {
   return (
-    <View style={styles.container}>
-      <StatusBar hidden={isStatusBarHidden} />
+    <ScrollView style={styles.container}>
+      <View style={styles.content}>
+        {/* Sección de texto */}
+        <View style={styles.textSection}>
+          <Text style={styles.title}>Sobre nosotros.</Text>
+          <Text style={styles.text}>
+            Radar Eventos Aguascalientes es una plataforma dedicada a la promoción de eventos de todo tipo dentro del estado de Aguascalientes. Nuestro objetivo es conectar a las personas con las experiencias más emocionantes y variadas que la ciudad tiene para ofrecer, desde conciertos, ferias, exposiciones y eventos deportivos, hasta conferencias, festivales y actividades culturales.
+          </Text>
+          <Text style={styles.text}>
+            Creemos que Aguascalientes es un lugar vibrante y lleno de vida, con algo para todos. Por ello, trabajamos constantemente para proporcionar información actualizada y precisa sobre los próximos eventos, facilitando a nuestros usuarios encontrar lo que más les interesa, todo en un solo lugar.
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.boldText}>Misión:</Text> Ser el principal punto de referencia para cualquier persona que quiera estar al tanto de los eventos más importantes en Aguascalientes, promoviendo el acceso a la cultura, el entretenimiento y el conocimiento.
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.boldText}>Visión:</Text> Consolidarnos como la plataforma líder en difusión de eventos en Aguascalientes, fomentando la participación ciudadana y contribuyendo al crecimiento de la escena cultural y social del estado.
+          </Text>
+          <Text style={styles.text}>
+            En Radar Eventos Aguascalientes, nos apasiona promover todo lo que nuestra región tiene para ofrecer, creando una comunidad en la que las personas puedan descubrir nuevas experiencias y conectar con los eventos que les apasionan.
+          </Text>
+        </View>
 
-      <View style={styles.buttonContainer}>
-        <Button title="Toggle Status Bar" onPress={toggleStatusBar} />
+        {/* Sección de imagen */}
+        <View style={styles.imageSection}>
+          <Image
+            source={{ require: 'C:/Users/PC/Documents/GitHub/ProyectoTopicos/assets/images/radar.png' }} // Sustituir por la URL o la ruta local del logo
+            style={styles.logo}
+          />
+          <Text style={styles.logoText}>RADAR EVENTOS AGS</Text>
+        </View>
       </View>
-
-      <ScrollView contentContainerStyle={styles.scrollViewContent}
-      nestedScrollEnabled>
-        {/* Contenido General */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Curriculum</Text>
-          <Text style={styles.generalText}>
-          Soy un desarrollador web apasionado por la tecnología, con experiencia en 
-          la creación de aplicaciones web dinámicas utilizando tecnologías como JavaScript, 
-          React, Node.js y bases de datos. Me especializo en el desarrollo frontend y backend, 
-          aplicando buenas prácticas de programación y metodologías ágiles. Mi objetivo es 
-          continuar aprendiendo y colaborar en proyectos desafiantes que me permitan seguir 
-          creciendo como profesional y aportar soluciones innovadoras.          </Text>
-        </View>
-
-        {/* Contenedor de SectionList */}
-        <View style={styles.borderedList}>
-          <Text style={styles.listHeaderTitle}>Competencias</Text>
-          <SectionList
-            sections={sections}
-            keyExtractor={(item, index) => item + index}
-            renderItem={({ item }) => (
-              <View style={styles.card}>
-                <Text style={styles.item}>{item}</Text>
-              </View>
-            )}
-            renderSectionHeader={({ section: { title } }) => (
-              <Text style={styles.sectionHeader}>{title}</Text>
-            )}
-            contentContainerStyle={styles.listContent}
-            style={styles.list}
-            nestedScrollEnabled
-          />
-        </View>
-
-        {/* Contenedor de FlatList */}
-        <View style={styles.borderedList}>
-          <Text style={styles.listHeaderTitle}>Proyectos</Text>
-          <FlatList
-            data={projects}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <View style={styles.card}>
-                <Text style={styles.item}>{item.name}</Text>
-              </View>
-            )}
-            nestedScrollEnabled
-          />
-        </View>
-      </ScrollView>
-    </View>
+    </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#D7E8F7',
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
-  buttonContainer: {
-    padding: 10,
-    backgroundColor: '#D7E8F7',
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  scrollViewContent: {
-    paddingBottom: 20,
+  textSection: {
+    flex: 2,
+    marginRight: 20,
   },
-  section: {
-    padding: 15,
-    backgroundColor: '#E8F1FA',
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 15,
+  },
+  text: {
+    fontSize: 16,
+    color: '#333333',
+    lineHeight: 24,
+    textAlign: 'justify',
+    marginBottom: 15,
+  },
+  boldText: {
+    fontWeight: 'bold',
+  },
+  imageSection: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: 120,
+    height: 120,
     marginBottom: 10,
   },
-  sectionTitle: {
+  logoText: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 5,
-    color: '#444',
-  },
-  generalText: {
-    fontSize: 16,
-    color: '#666',
-  },
-  borderedList: {
-    margin: 10,
-    borderWidth: 2,
-    borderColor: '#888',
-    borderRadius: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    padding: 10,
-  },
-  listHeaderTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
+    color: '#003366',
     textAlign: 'center',
-    marginBottom: 10,
-  },
-  list: {
-    maxHeight: 500,
-  },
-  listContent: {
-    paddingBottom: 20,
-  },
-  sectionHeader: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginVertical: 10,
-    textAlign: 'center',
-    backgroundColor: '#E8F1FA',
-    padding: 10,
-  },
-  card: {
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    borderRadius: 8,
-    padding: 10,
-    marginVertical: 5,
-    marginHorizontal: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 2,
-  },
-  item: {
-    fontSize: 16,
-    color: '#444',
   },
 });
 
-export default Competencias;
+export default SobreNosotros;
