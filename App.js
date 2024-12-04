@@ -4,22 +4,16 @@ import { NativeBaseProvider, Button, Image, HStack } from 'native-base';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Registro from "./src/screens/Registro";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './src/screens/HomeScreen';
 import SettingScreen from './src/screens/SettingScreen';
-import NotificationScreen from './src/screens/NotificationsScreen';
-import ProfileScreen from "./src/screens/ProfileScreen";
 import ConfigScreen from "./src/screens/ConfigScreen";
 import Competencias from "./src/screens/Competencias";
 import DirectorioScreen from "./src/screens/DirectorioScreen";
 import Market from "./src/screens/Market";
 import Kudai from "./src/screens/Kudai";
 import FNSM from "./src/screens/FNSM";
-import Guardado from "./src/screens/Guardado";
-import Favorito from "./src/screens/Favorito";
 import AddressSearchScreen from "./src/screens/EventoCerca";
-import LoginScreen from "./src/screens/LoginScreen";
 import ContactosScreen from "./src/screens/ContactosScreen";
 
 const Tab = createBottomTabNavigator();
@@ -68,7 +62,6 @@ export default function App() {
             headerTitle: "", // Elimina el texto del título
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
-
               if (route.name === 'Sobre Nosotros') {
                 iconName = focused ? 'information-circle' : 'information-circle-outline';
               } else if (route.name === 'Contacto') {
@@ -78,7 +71,6 @@ export default function App() {
               } else if (route.name === 'Términos y Condiciones') {
                 iconName = focused ? 'list' : 'list-outline';
               }
-
               return <Ionicons name={iconName} size={size} color={color} />;
             },
             tabBarActiveTintColor: 'tomato',
@@ -88,13 +80,6 @@ export default function App() {
           <Tab.Screen 
             name="Inicio" 
             component={HomeScreen} 
-            options={{
-              tabBarButton: () => null, // Oculta el botón de la barra inferior
-            }}
-          />
-          <Tab.Screen 
-            name="Perfil" 
-            component={ProfileScreen} 
             options={{
               tabBarButton: () => null, // Oculta el botón de la barra inferior
             }}
@@ -128,36 +113,8 @@ export default function App() {
             }}
           />
           <Tab.Screen 
-            name="Guardado" 
-            component={Guardado} 
-            options={{
-              tabBarButton: () => null, // Oculta el botón de la barra inferior
-            }}
-          />
-          <Tab.Screen 
-            name="Favorito" 
-            component={Favorito} 
-            options={{
-              tabBarButton: () => null, // Oculta el botón de la barra inferior
-            }}
-          />
-          <Tab.Screen 
             name="Cerca" 
             component={AddressSearchScreen} 
-            options={{
-              tabBarButton: () => null, // Oculta el botón de la barra inferior
-            }}
-          />
-          <Tab.Screen 
-            name="Registro" 
-            component={Registro} 
-            options={{
-              tabBarButton: () => null, // Oculta el botón de la barra inferior
-            }}
-          />
-          <Tab.Screen 
-            name="Login" 
-            component={LoginScreen} 
             options={{
               tabBarButton: () => null, // Oculta el botón de la barra inferior
             }}
