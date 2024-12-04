@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // Importa useNavigation
+
 
 export default function AddressSearchScreen() {
+
+  const navigation = useNavigation(); 
   const [street, setStreet] = useState('');
   const [number, setNumber] = useState('');
   const [colony, setColony] = useState('');
