@@ -1,12 +1,38 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native'; // Importa useNavigation
 import { NativeBaseProvider, Box, Text, VStack, FormControl, Input, Button, Center, Link, HStack, Image } from 'native-base';
-import { Pressable } from 'react-native';
+import { Pressable, View, StyleSheet, SafeAreaView } from 'react-native';
 
-export default function LoginScreen({ onLogin, navigation }) {
+
+
+export default function LoginScreen({ onLogin}) {
+
+  const navigation = useNavigation(); // Obtén el objeto de navegación
+  
   const [nom, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+   // Componente del encabezado
+   const AppHeader = () => {
+    return (
+      <SafeAreaView>
+        <View style={styles.header}>
+          <Image
+           source={require('../../assets/images/logo.png')} 
+           alt="Logo"
+                    resizeMode="contain"
+                    flex={1}
+                    height="100px"
+                    width="200px"
+                    
+            style={styles.image}
+          />
+        </View>
+      </SafeAreaView>
+    );
+  };
+  
   const handleLogin = () => {
     console.log("Nom:", nom);
     console.log("Email:", email);
@@ -15,7 +41,10 @@ export default function LoginScreen({ onLogin, navigation }) {
   };
 
   return (
+    
     <NativeBaseProvider>
+        {/* Header */}
+        <AppHeader />
       <Center flex={1} px="3">
         <HStack flex={1} w="100%">
           {/* Sección izquierda: Imagen */}
@@ -63,13 +92,7 @@ export default function LoginScreen({ onLogin, navigation }) {
                   onChangeText={text => setPassword(text)}
                   secureTextEntry
                 />
-                <Link
-                  _text={{ fontSize: "xs", fontWeight: "500", color: "indigo.500" }}
-                  alignSelf="flex-end"
-                  mt="1"
-                >
-                  ¿Olvidaste tu contraseña?
-                </Link>
+               
               </FormControl>
               <Button mt="2" colorScheme="indigo" onPress={handleLogin}>
                 Iniciar Sesión
@@ -77,9 +100,9 @@ export default function LoginScreen({ onLogin, navigation }) {
 
               <HStack mt="6" justifyContent="center">
                 <Text>¿Eres nuevo?{" "}</Text>
-                <Pressable onPress={() => navigation.navigate('Registro')}>
+                <Pressable  onPress={() => navigation.navigate('Registro')}>
                   <Text color="indigo.500" fontWeight="medium" fontSize="sm">
-                    Regístrate
+                   Regístrate
                   </Text>
                 </Pressable>
               </HStack>
@@ -90,3 +113,22 @@ export default function LoginScreen({ onLogin, navigation }) {
     </NativeBaseProvider>
   );
 }
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+   
+    backgroundColor: '#6200EE',
+    padding: 16,
+  },
+  image: {
+    width: 50, // Ajusta según el tamaño deseado
+    height: 50, // Ajusta según el tamaño deseado
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    marginLeft: 10,
+  },
+});
+
