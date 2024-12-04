@@ -27,10 +27,15 @@ function SobreNosotros() {
 
         {/* Sección de imagen */}
         <View style={styles.imageSection}>
-          <Image
-            source={{ uri: '/assets/images/radar.png' }} // Sustituir por la URL o la ruta local del logo
-            style={styles.logo}
-          />
+        <Image
+                  source={require('../../assets/images/logo.png')} // Ruta de la imagen
+                  alt="Logo"
+                  resizeMode="contain"
+                  flex={1}
+                  height="100px"
+                  width="200px"
+                  ml="2"
+                />
           <Text style={styles.logoText}>RADAR EVENTOS AGS</Text>
         </View>
       </View>

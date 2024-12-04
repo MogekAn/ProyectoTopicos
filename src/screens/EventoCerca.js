@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Importa useNavigation
-
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 export default function AddressSearchScreen() {
-
-  const navigation = useNavigation(); 
   const [street, setStreet] = useState('');
   const [number, setNumber] = useState('');
   const [colony, setColony] = useState('');
   const [postalCode, setPostalCode] = useState('');
+  const [location, setLocation] = useState(null);
 
   const handleSearch = () => {
     console.log('Calle:', street);
     console.log('Número:', number);
     console.log('Colonia:', colony);
     console.log('Código Postal:', postalCode);
+
+    // Aquí puedes configurar una ubicación de ejemplo
+    setLocation({
+      coords: {
+        latitude: 21.1619, // Latitud de ejemplo: Aguascalientes
+        longitude: -101.6228, // Longitud de ejemplo
+      },
+    });
   };
 
   return (
@@ -61,12 +67,19 @@ export default function AddressSearchScreen() {
 
       {/* Sección del mapa */}
       <View style={styles.mapContainer}>
-      
+        {location && (
+          <WebView
+            style={styles.map}
+            originWhitelist={['*']}
+            source={{
+              uri: `https://www.google.com/maps?q=${location.coords.latitude},${location.coords.longitude}&z=15`,
+            }}
+          />
+        )}
       </View>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -96,13 +109,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  locationContainer: {
+    width: '120%',
+    height: '60%',
+    
+  },
   map: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
+      width: '100%',
+      height: '5%',
   },
 });
-
-
-
-

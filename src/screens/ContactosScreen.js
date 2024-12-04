@@ -26,9 +26,7 @@ function ContactosScreen() {
         </TouchableOpacity>
         <TouchableOpacity>
           <Image
-            source={{
-              uri: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Gmail_Icon_2020.svg',
-            }}
+            source={{uri: 'https://cdn-icons-png.flaticon.com/512/281/281769.png' }}
             style={styles.icon}
           />
         </TouchableOpacity>
@@ -47,10 +45,15 @@ function ContactosScreen() {
 
       {/* Logotipo de Radar Eventos */}
       <View style={styles.logoContainer}>
-        <Image
-          source={{ uri: 'https://via.placeholder.com/100' }} // Reemplaza con la ruta del logotipo
-          style={styles.logo}
-        />
+      <Image
+                  source={require('../../assets/images/logo.png')} // Ruta de la imagen
+                  alt="Logo"
+                  resizeMode="contain"
+                  flex={1}
+                  height="100px"
+                  width="200px"
+                  ml="2"
+                />
         <Text style={styles.logoText}>RADAR EVENTOS AGS</Text>
       </View>
     </View>

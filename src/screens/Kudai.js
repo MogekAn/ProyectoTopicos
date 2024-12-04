@@ -12,33 +12,22 @@ function Kudai({ route }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.rowContainer}>
+        {/* Contenedor de la imagen y el botón */}
         <View style={styles.imageContainer}>
           <Image
             source={require('../../assets/images/AuDimo.png')}
             style={styles.image}
           />
+          <Pressable
+            style={styles.mapButton}
+            onPress={() => Linking.openURL("https://maps.app.goo.gl/nzjpycaRdZMXVaeo9")}
+          >
+            <Text style={styles.mapButtonText}>Ver en mapa</Text>
+          </Pressable>
         </View>
 
+        {/* Contenedor del texto */}
         <View style={styles.textContainer}>
-          {/* Contenedor para los íconos */}
-          <View style={styles.iconRow}>
-            <Icon
-              name={isLiked ? "heart" : "heart-outline"}
-              size={30}
-              color="red"
-              style={styles.leftIcon}
-              onPress={() => setIsLiked(!isLiked)}
-            />
-            <Icon
-              name={isScheduled ? "calendar-sharp" : "calendar-outline"}
-              size={30}
-              color="black"
-              style={styles.rightIcon}
-              onPress={() => setIsScheduled(!isScheduled)}
-            />
-          </View>
-
-          {/* Nueva sección con HStack */}
           <View style={styles.hStack}>
             <Image
               source={{ uri: 'https://cdn.arema.dev/live/eventos/13078.jpg' }}
@@ -60,7 +49,7 @@ function Kudai({ route }) {
                 <Text style={styles.infoText}>Más info</Text>
               </View>
 
-              {/* Redes para más info */}
+              {/* Redes sociales */}
               <View style={styles.socialIconsRow}>
                 <Icon
                   name="logo-facebook"
@@ -84,14 +73,6 @@ function Kudai({ route }) {
                   onPress={() => Linking.openURL("https://arema.mx/evento/13078")}
                 />
               </View>
-
-              {/* Botón de "Ver en mapa" */}
-              <Pressable
-                style={styles.mapButton}
-                onPress={() => Linking.openURL("https://maps.app.goo.gl/nzjpycaRdZMXVaeo9")}
-              >
-                <Text style={styles.mapButtonText}>Ver en mapa</Text>
-              </Pressable>
             </View>
           </View>
         </View>
@@ -105,7 +86,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#fff',
-    flexDirection: 'column',
   },
   rowContainer: {
     flexDirection: 'row',
@@ -114,34 +94,30 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '40%',
-    height: 500,
-    marginRight: 20,
+    alignItems: 'center', // Centra el botón horizontalmente
   },
   image: {
     width: '100%',
-    height: '100%',
+    height: 600,
     borderRadius: 10,
+    marginBottom: 10, // Espacio entre la imagen y el botón
+  },
+  mapButton: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    width: '80%',
+    alignItems: 'center',
+  },
+  mapButtonText: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
   },
   textContainer: {
     flex: 1,
     marginLeft: 20,
-  },
-  iconRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  leftIcon: {
-    marginLeft: 10,
-  },
-  rightIcon: {
-    marginRight: 10,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
   },
   hStack: {
     flexDirection: 'row',
@@ -184,18 +160,6 @@ const styles = StyleSheet.create({
   },
   socialIcon: {
     marginHorizontal: 10,
-  },
-  mapButton: {
-    backgroundColor: '#007BFF',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    marginTop: 20,
-  },
-  mapButtonText: {
-    color: 'white',
-    fontSize: 16,
-    textAlign: 'center',
   },
 });
 

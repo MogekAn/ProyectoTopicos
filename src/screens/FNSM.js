@@ -5,42 +5,28 @@ import Icon from 'react-native-vector-icons/Ionicons';
 function FNSM({ route }) {
   const { event } = route.params;
 
-  // Estados para los íconos
-  const [isLiked, setIsLiked] = useState(false); // Controla el icono del corazón
-  const [isScheduled, setIsScheduled] = useState(false); // Controla el icono del calendario
+  const [isLiked, setIsLiked] = useState(false);
+  const [isScheduled, setIsScheduled] = useState(false);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.rowContainer}>
+        {/* Contenedor de la imagen y el botón */}
         <View style={styles.imageContainer}>
           <Image
             source={require('../../assets/images/FNSM.png')} // Ruta de la imagen en el proyecto
             style={styles.image}
           />
+          <Pressable
+            style={styles.mapButton}
+            onPress={() => Linking.openURL("https://maps.app.goo.gl/EMjMBXaAggaWWQxG9")}
+          >
+            <Text style={styles.mapButtonText}>Ver en mapa</Text>
+          </Pressable>
         </View>
 
+        {/* Contenedor del texto */}
         <View style={styles.textContainer}>
-          {/* Contenedor para los íconos */}
-          <View style={styles.iconRow}>
-            {/* Icono de corazón */}
-            <Icon
-              name={isLiked ? "heart" : "heart-outline"}
-              size={30}
-              color="red"
-              style={styles.leftIcon}
-              onPress={() => setIsLiked(!isLiked)} // Alterna el estado
-            />
-            {/* Icono de calendario */}
-            <Icon
-              name={isScheduled ? "calendar-sharp" : "calendar-outline"}
-              size={30}
-              color="black"
-              style={styles.rightIcon}
-              onPress={() => setIsScheduled(!isScheduled)} // Alterna el estado
-            />
-          </View>
-
-          {/* Nueva sección con HStack */}
           <View style={styles.hStack}>
             <Image
               source={{
@@ -50,18 +36,10 @@ function FNSM({ route }) {
             />
             <View style={styles.detailsContainer}>
               <Text style={styles.title}>{event.name}</Text>
-              <Text style={styles.details}>
-                🎉 Feria Nacional de San Marcos 2025
-              </Text>
-              <Text style={styles.details}>
-                📅 Del 19 de abril al 11 de mayo  
-              </Text>
-              <Text style={styles.details}>
-                📍 En Aguascalientes
-              </Text>
-              <Text style={styles.details}>
-                🔜 Próximamente más detalles
-              </Text>
+              <Text style={styles.details}>🎉 Feria Nacional de San Marcos 2025</Text>
+              <Text style={styles.details}>📅 Del 19 de abril al 11 de mayo</Text>
+              <Text style={styles.details}>📍 En Aguascalientes</Text>
+              <Text style={styles.details}>🔜 Próximamente más detalles</Text>
 
               {/* Línea azul y leyenda "Más info" */}
               <View style={styles.infoContainer}>
@@ -69,7 +47,7 @@ function FNSM({ route }) {
                 <Text style={styles.infoText}>Más info</Text>
               </View>
 
-              {/* Redes para más info */}
+              {/* Redes sociales */}
               <View style={styles.socialIconsRow}>
                 <Icon
                   name="logo-facebook"
@@ -95,14 +73,6 @@ function FNSM({ route }) {
                   }
                 />
               </View>
-
-              {/* Botón de "Ver en mapa" */}
-              <Pressable
-                style={styles.mapButton}
-                onPress={() => Linking.openURL("https://maps.app.goo.gl/EMjMBXaAggaWWQxG9")}
-              >
-                <Text style={styles.mapButtonText}>Ver en mapa</Text>
-              </Pressable>
             </View>
           </View>
         </View>
@@ -116,7 +86,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#fff',
-    flexDirection: 'column',
   },
   rowContainer: {
     flexDirection: 'row',
@@ -125,34 +94,32 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '40%',
-    height: 500,
+    height: 'auto',
     marginRight: 20,
+    alignItems: 'center', // Centra el botón horizontalmente
   },
   image: {
     width: '100%',
-    height: '100%',
+    height: 600,
     borderRadius: 10,
+    marginBottom: 10, // Espacio entre la imagen y el botón
+  },
+  mapButton: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    width: '80%',
+    alignItems: 'center',
+  },
+  mapButtonText: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
   },
   textContainer: {
     flex: 1,
     marginLeft: 20,
-  },
-  iconRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  leftIcon: {
-    marginLeft: 10,
-  },
-  rightIcon: {
-    marginRight: 10,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
   },
   hStack: {
     flexDirection: 'row',
@@ -174,19 +141,19 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     marginTop: 15,
-    alignItems: 'flex-start', // Alinea a la izquierda
+    alignItems: 'flex-start',
   },
   infoText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#a9a9a9', // Gris claro
+    color: '#a9a9a9',
     marginBottom: 5,
   },
   line: {
     width: '100%',
     height: 2,
     backgroundColor: 'blue',
-    marginTop: 5, // Espacio entre el texto y la línea
+    marginTop: 5,
   },
   socialIconsRow: {
     flexDirection: 'row',
@@ -196,18 +163,7 @@ const styles = StyleSheet.create({
   socialIcon: {
     marginHorizontal: 10,
   },
-  mapButton: {
-    backgroundColor: '#007BFF',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    marginTop: 20,
-  },
-  mapButtonText: {
-    color: 'white',
-    fontSize: 16,
-    textAlign: 'center',
-  },
 });
 
 export default FNSM;
+
