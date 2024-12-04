@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, Linking } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, ScrollView, Linking, Pressable, Image } from 'react-native'; // Importar Image
 import Icon from 'react-native-vector-icons/Ionicons';
 
 function Market({ route }) {
   const { event } = route.params;
 
   // Estado para alternar iconos
-  const [fav, noFav] = useState(false);
-  const [agendar, noAgendar] = useState(false);
+  const [fav, setFav] = useState(false); // Usar setFav para alternar el estado
+  const [agendar, setAgendar] = useState(false); // Usar setAgendar para alternar el estado
+
+  const handleMapPress = () => {
+    Linking.openURL('https://maps.app.goo.gl/xL16mFkroQRGU1LQ6'); // Redirige al enlace del mapa
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.rowContainer}>
         <View style={styles.imageContainer}>
           <Image
-            source={require('../../assets/images/Market.png')} // Ruta de la imagen en el proyecto
+            source={require('../../assets/images/Market.png')}
             style={styles.image}
           />
         </View>
@@ -26,11 +30,12 @@ function Market({ route }) {
             <Icon
               name={fav ? "heart" : "heart-outline"}
               size={30} color="red" style={styles.leftIcon}
-              onPress={() => noFav(!fav)} // Alterna el estado
+              onPress={() => setFav(!fav)} // Alterna el estado con setFav
             />
-            <Icon name={agendar ? "calendar-sharp" : "calendar-outline"}
+            <Icon
+              name={agendar ? "calendar-sharp" : "calendar-outline"}
               size={30} color="black" style={styles.rightIcon}
-              onPress={() => noAgendar(!agendar)}
+              onPress={() => setAgendar(!agendar)} // Alterna el estado con setAgendar
             />
           </View>
 
@@ -64,13 +69,33 @@ function Market({ route }) {
 
               {/* Redes para más info */}
               <View style={styles.socialIconsRow}>
-                <Icon name="logo-facebook" size={30} color="gray" style={styles.socialIcon}
-                  onPress={() => Linking.openURL("https://www.facebook.com/profile.php?id=100083598896259&locale=es_LA")} />
-                <Icon name="logo-instagram" size={30} color="gray" style={styles.socialIcon}
-                  onPress={() => Linking.openURL("https://www.instagram.com/Market_nocturno?fbclid=IwY2xjawG6NEtleHRuA2FlbQIxMAABHTA7Yz_hENyMS_UjuHiq0K_Dtb4Tf1q7IahSYtQs3gCfrzpP91aDGYbG4A_aem_hjW0KYQejx5F0xJn4Xoh-A")} />
-                <Icon name="logo-tiktok" size={30} color="gray" style={styles.socialIcon}
-                  onPress={() => Linking.openURL("https://www.tiktok.com/@marketnocturnoags?is_from_webapp=1&sender_device=pc")} />
+                <Icon
+                  name="logo-facebook"
+                  size={30}
+                  color="gray"
+                  style={styles.socialIcon}
+                  onPress={() => Linking.openURL("https://www.facebook.com/profile.php?id=100083598896259&locale=es_LA")}
+                />
+                <Icon
+                  name="logo-instagram"
+                  size={30}
+                  color="gray"
+                  style={styles.socialIcon}
+                  onPress={() => Linking.openURL("https://www.instagram.com/Market_nocturno?fbclid=IwY2xjawG6NEtleHRuA2FlbQIxMAABHTA7Yz_hENyMS_UjuHiq0K_Dtb4Tf1q7IahSYtQs3gCfrzpP91aDGYbG4A_aem_hjW0KYQejx5F0xJn4Xoh-A")}
+                />
+                <Icon
+                  name="logo-tiktok"
+                  size={30}
+                  color="gray"
+                  style={styles.socialIcon}
+                  onPress={() => Linking.openURL("https://www.tiktok.com/@marketnocturnoags?is_from_webapp=1&sender_device=pc")}
+                />
               </View>
+
+              {/* Botón Ver en mapa */}
+              <Pressable style={styles.mapButton} onPress={handleMapPress}>
+                <Text style={styles.mapButtonText}>Ver en mapa</Text>
+              </Pressable>
             </View>
           </View>
         </View>
@@ -164,7 +189,19 @@ const styles = StyleSheet.create({
   socialIcon: {
     marginHorizontal: 10,
   },
+  mapButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  mapButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
-
 
 export default Market;

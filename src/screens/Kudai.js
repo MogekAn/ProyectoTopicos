@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, Linking } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Linking, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 function Kudai({ route }) {
@@ -47,11 +47,11 @@ function Kudai({ route }) {
             <View style={styles.detailsContainer}>
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.details}>
-              📅 7 de diciembre
+                📅 7 de diciembre
                 {"\n"}
-              ⌚ 9:00 pm
+                ⌚ 9:00 pm
                 {"\n"}
-              📍 Lugar: Auditorio Dimo
+                📍 Lugar: Auditorio Dimo
               </Text>
 
               {/* Línea azul y leyenda "Más info" */}
@@ -84,6 +84,14 @@ function Kudai({ route }) {
                   onPress={() => Linking.openURL("https://arema.mx/evento/13078")}
                 />
               </View>
+
+              {/* Botón de "Ver en mapa" */}
+              <Pressable
+                style={styles.mapButton}
+                onPress={() => Linking.openURL("https://maps.app.goo.gl/nzjpycaRdZMXVaeo9")}
+              >
+                <Text style={styles.mapButtonText}>Ver en mapa</Text>
+              </Pressable>
             </View>
           </View>
         </View>
@@ -176,6 +184,18 @@ const styles = StyleSheet.create({
   },
   socialIcon: {
     marginHorizontal: 10,
+  },
+  mapButton: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  mapButtonText: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
 

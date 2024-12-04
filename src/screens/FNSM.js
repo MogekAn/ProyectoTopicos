@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, Linking } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Linking, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 function FNSM({ route }) {
@@ -52,14 +52,14 @@ function FNSM({ route }) {
               <Text style={styles.title}>{event.name}</Text>
               <Text style={styles.details}>
                 🎉 Feria Nacional de San Marcos 2025
-                </Text>
-                <Text style={styles.details}>
+              </Text>
+              <Text style={styles.details}>
                 📅 Del 19 de abril al 11 de mayo  
-                </Text>
-                <Text style={styles.details}>
+              </Text>
+              <Text style={styles.details}>
                 📍 En Aguascalientes
-                </Text>
-                <Text style={styles.details}>
+              </Text>
+              <Text style={styles.details}>
                 🔜 Próximamente más detalles
               </Text>
 
@@ -95,6 +95,14 @@ function FNSM({ route }) {
                   }
                 />
               </View>
+
+              {/* Botón de "Ver en mapa" */}
+              <Pressable
+                style={styles.mapButton}
+                onPress={() => Linking.openURL("https://maps.app.goo.gl/EMjMBXaAggaWWQxG9")}
+              >
+                <Text style={styles.mapButtonText}>Ver en mapa</Text>
+              </Pressable>
             </View>
           </View>
         </View>
@@ -187,6 +195,18 @@ const styles = StyleSheet.create({
   },
   socialIcon: {
     marginHorizontal: 10,
+  },
+  mapButton: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  mapButtonText: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
 
