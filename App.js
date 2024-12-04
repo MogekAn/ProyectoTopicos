@@ -20,6 +20,9 @@ import FNSM from "./src/screens/FNSM";
 import Guardado from "./src/screens/Guardado";
 import Favorito from "./src/screens/Favorito";
 import AddressSearchScreen from "./src/screens/EventoCerca";
+import API from "./src/screens/services/api";
+
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -149,6 +152,27 @@ export default function App() {
             <Tab.Screen 
               name="Cerca" 
               component={AddressSearchScreen} 
+              options={{
+                tabBarButton: () => null, // Oculta el botón de la barra inferior
+              }}
+            />
+            <Tab.Screen 
+              name="Registro" 
+              component={Registro} 
+              options={{
+                tabBarButton: () => null, // Oculta el botón de la barra inferior
+              }}
+            />
+            <Tab.Screen 
+              name="Login" 
+              component={LoginScreen} 
+              options={{
+                tabBarButton: () => null, // Oculta el botón de la barra inferior
+              }}
+            />
+            <Tab.Screen 
+              name="API" 
+              component={API} 
               options={{
                 tabBarButton: () => null, // Oculta el botón de la barra inferior
               }}
