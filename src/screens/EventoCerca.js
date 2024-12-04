@@ -61,13 +61,7 @@ export default function AddressSearchScreen() {
 
       {/* Sección del mapa */}
       <View style={styles.mapContainer}>
-      <Image
-              source={require('../../assets/images/FondoReg.png')} 
-              alt="Imagen decorativa"
-              resizeMode="cover" // "cover" hace que la imagen ocupe toda el área disponible, manteniendo su proporción
-              width="100%" // Asegura que ocupe todo el ancho
-              height="100%" // Asegura que ocupe todo el alto
-            />
+      
       </View>
     </View>
   );
@@ -108,5 +102,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
 });
+
+
 
 
