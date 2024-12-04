@@ -15,17 +15,17 @@ import ConfigScreen from "./src/screens/ConfigScreen";
 import Competencias from "./src/screens/Competencias";
 import DirectorioScreen from "./src/screens/DirectorioScreen";
 import Market from "./src/screens/Market";
-import Kudai from "./src/screens/Kudai"
+import Kudai from "./src/screens/Kudai";
 import FNSM from "./src/screens/FNSM";
 import Guardado from "./src/screens/Guardado";
 import Favorito from "./src/screens/Favorito";
-
+import AddressSearchScreen from "./src/screens/EventoCerca";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de autenticación
 
   const handleLogin = () => {
     setIsLoggedIn(true); // Cambia el estado a "autenticado" después de iniciar sesión
@@ -142,6 +142,13 @@ export default function App() {
             <Tab.Screen 
               name="Favorito" 
               component={Favorito} 
+              options={{
+                tabBarButton: () => null, // Oculta el botón de la barra inferior
+              }}
+            />
+            <Tab.Screen 
+              name="Cerca" 
+              component={AddressSearchScreen} 
               options={{
                 tabBarButton: () => null, // Oculta el botón de la barra inferior
               }}
