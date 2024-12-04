@@ -6,6 +6,7 @@ const PrivacyPolicyScreen = ({ navigation }) => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Text style={styles.title}>Políticas de Privacidad</Text>
+        <Text style={styles.updateDate}>Última actualización: 13/10/2024</Text>
         <Text style={styles.content}>
           En Radar Eventos Aguascalientes, tu privacidad es muy importante para nosotros. Por ello, hemos desarrollado esta Política de Privacidad para explicar cómo recopilamos, usamos y protegemos tu información personal.
         </Text>
@@ -40,7 +41,7 @@ const PrivacyPolicyScreen = ({ navigation }) => {
         <Text style={styles.content}>
           Si tienes preguntas o inquietudes sobre nuestra Política de Privacidad, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte.
         </Text>
-        <Text style={styles.date}>Fecha de última actualización: [03-12-2024].</Text>
+        
       </ScrollView>
     </View>
   );
@@ -67,6 +68,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
     color: '#333333',
+  },
+  updateDate: {
+    fontSize: 14,
+    color: '#999999',
+    textAlign: 'center',
+    marginBottom: 20,
   },
   content: {
     fontSize: 16,
