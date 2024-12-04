@@ -28,7 +28,7 @@ function SobreNosotros() {
         {/* Sección de imagen */}
         <View style={styles.imageSection}>
           <Image
-            source={{ require: 'C:/Users/PC/Documents/GitHub/ProyectoTopicos/assets/images/radar.png' }} // Sustituir por la URL o la ruta local del logo
+            source={{ uri: '/assets/images/radar.png' }} // Sustituir por la URL o la ruta local del logo
             style={styles.logo}
           />
           <Text style={styles.logoText}>RADAR EVENTOS AGS</Text>

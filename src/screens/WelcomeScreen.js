@@ -6,7 +6,7 @@ function WelcomeScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Welcome</Text>
       <hr></hr>
-            <Button title="Go to Home"
+            <Button title="Go "
             onPress={() => navigation.navigate('Home')}  />
       <hr></hr>
             <Button title="Go to Details" 

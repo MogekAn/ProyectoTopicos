@@ -5,7 +5,7 @@ export default function SettingsScreen({navigation}) {
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
             <Button
                 onPress={() => navigation.navigate("Home")}
-                title="Go "
+                title="Go to Home"
             />
         </View>
     );
