@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'; // Importa useNavigati
 import API from './services/api';
 
 const ProfileScreen = () => {
-  const [userName, setUserName] = useState('Sin Sesión'); // Estado para el nombre del usuario con valor predeterminado
+  const [userName, setUserName] = useState(null); // Estado inicial como null para diferenciar entre "Sin Sesión" y cargando
   const toast = useToast();
   const navigation = useNavigation(); // Obtén el objeto de navegación
 
@@ -12,12 +12,12 @@ const ProfileScreen = () => {
     // Llamada a la API para obtener el usuario actual
     API.get('/users/me') // Supongamos que este endpoint devuelve los datos del usuario autenticado
       .then(response => {
-        const name = response.data?.name || "Sin Sesión"; // Si no hay nombre, usa "Sin Sesión"
+        const name = response.data?.name || null; // Si no hay nombre, asigna null
         setUserName(name); // Guarda el nombre del usuario en el estado
       })
       .catch(error => {
         console.error('Error fetching user data:', error);
-        setUserName("Sin Sesión"); // Asigna "Sin Sesión" si ocurre un error
+        setUserName(null); // Asigna null si ocurre un error
         toast.show({
           title: "No se encontró una sesión activa",
           status: "warning",
@@ -51,17 +51,30 @@ const ProfileScreen = () => {
     <Center flex={1} px={4} bg="gray.200"> {/* Fondo gris para toda la página */}
       {/* Barra superior */}
       <HStack w="100%" justifyContent="space-between" alignItems="center" p={4} bg="white" position="absolute" top={10} left={0} right={0} zIndex={1}>
-        {/* Nombre del usuario */}
-        <Text fontSize="lg" color="gray.600" fontWeight="bold">
-          {userName}
-        </Text>
+        {/* Mostrar botón de Login o nombre del usuario */}
+        {userName ? (
+          <Text fontSize="lg" color="gray.600" fontWeight="bold">
+            {userName}
+          </Text>
+        ) : (
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onPress={() => navigation.navigate("Login")} // Navega a la pantalla de Login
+          >
+            Login
+          </Button>
+        )}
         <Text fontSize="4xl" color="gray.600" fontWeight="bold" textAlign="center">
           PERFIL
         </Text>
         <Button
           variant="solid"
           colorScheme="blue"
-          onPress={() => toast.show({ title: "Sesión cerrada", status: "warning" })}
+          onPress={() => {
+            setUserName(null); // Restablece el estado a "Sin sesión"
+            toast.show({ title: "Sesión cerrada", status: "warning" });
+          }}
         >
           Cerrar sesión
         </Button>
@@ -69,7 +82,7 @@ const ProfileScreen = () => {
 
       {/* Opciones horizontales */}
       <HStack justifyContent="space-between" mt={20} w="100%" flexWrap="wrap">
-        {[
+        {[ 
           { label: "Guardados", image: require('../../assets/images/Guardados.png') },
           { label: "Favoritos", image: require('../../assets/images/Favoritos.png') },
           { label: "Eventos cercanos", image: require('../../assets/images/Cerca.png') },
