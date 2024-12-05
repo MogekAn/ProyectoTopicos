@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Linking, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-function Market({ route }) {
+function Market({ route, navigation }) {
   const { event } = route.params;
 
   const [fav, setFav] = useState(false);
@@ -10,6 +10,10 @@ function Market({ route }) {
 
   const handleMapPress = () => {
     Linking.openURL('https://maps.app.goo.gl/xL16mFkroQRGU1LQ6');
+  };
+
+  const handleCommentsPress = () => {
+    navigation.navigate('Comentarios');  // Redirige a la pantalla de comentarios
   };
 
   return (
@@ -74,7 +78,13 @@ function Market({ route }) {
                   onPress={() => Linking.openURL("https://www.tiktok.com/@marketnocturnoags")}
                 />
               </View>
+
+              {/* Botón para comentarios */}
+              <Pressable style={styles.mapButton} onPress={handleCommentsPress}>
+                <Text style={styles.mapButtonText}>Comentarios</Text>
+              </Pressable>
             </View>
+            
           </View>
         </View>
       </View>

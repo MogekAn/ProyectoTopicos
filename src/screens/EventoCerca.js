@@ -1,121 +1,105 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import { WebView } from 'react-native-webview';
+import { View, StyleSheet, ScrollView, Image, Linking } from 'react-native';
+import { Text, VStack, HStack, Button, Pressable } from 'native-base';
 
-export default function AddressSearchScreen() {
-  const [street, setStreet] = useState('');
-  const [number, setNumber] = useState('');
-  const [colony, setColony] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [location, setLocation] = useState(null);
-
-  const handleSearch = () => {
-    console.log('Calle:', street);
-    console.log('Número:', number);
-    console.log('Colonia:', colony);
-    console.log('Código Postal:', postalCode);
-
-    // Aquí puedes configurar una ubicación de ejemplo
-    setLocation({
-      coords: {
-        latitude: 21.1619, // Latitud de ejemplo: Aguascalientes
-        longitude: -101.6228, // Longitud de ejemplo
-      },
-    });
+function AddressSearchScreen() {
+  const [selectedZone, setSelectedZone] = useState(null);
+  
+  // Mapa de zonas a imágenes
+  const zoneImages = {
+    Norte: require('../../assets/images/Norte.jpeg'),
+    Sur: require('../../assets/images/Sur.jpeg'),
+    Este: require('../../assets/images/FNSM.png'),
+    Oeste: require('../../assets/images/FNSM.png'),
   };
 
+  const zones = ['Norte', 'Sur', 'Este', 'Oeste']; // Las zonas disponibles
+
   return (
-    <View style={styles.container}>
-      {/* Sección de formulario */}
-      <View style={styles.formContainer}>
-        <Text style={styles.label}>Calle:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa la calle"
-          value={street}
-          onChangeText={setStreet}
-        />
+    <ScrollView style={styles.container}>
+      <VStack space={1} alignItems="center" mt={4} bg="gray.300">
+        <Text fontSize="3xl" bold>
+          Eventos Cercanos
+        </Text>
+        <Text textAlign="center" px={1}>
+          En esta sección podrás filtrar tus eventos en categorías, géneros, por la letra inicial del nombre, los más populares, los más vistos, los recomendados y así :)
+        </Text>
+      </VStack>
 
-        <Text style={styles.label}>No.:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa el número"
-          value={number}
-          onChangeText={setNumber}
-          keyboardType="numeric"
-        />
+      <HStack space={4} mt={4} alignItems="center">
+        {/* Zonas de la ciudad */}
+        <VStack space={4} flex={1}>
+          <Text fontSize="lg" bold>
+            Zona de la ciudad
+          </Text>
 
-        <Text style={styles.label}>Fraccionamiento o colonia:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa la colonia"
-          value={colony}
-          onChangeText={setColony}
-        />
+          <Button
+            variant={selectedZone === null ? 'solid' : 'outline'}
+            onPress={() => setSelectedZone(null)}
+          >
+            Centro
+          </Button>
 
-        <Text style={styles.label}>Código postal:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ingresa el código postal"
-          value={postalCode}
-          onChangeText={setPostalCode}
-          keyboardType="numeric"
-        />
+          {zones.map((zone) => (
+            <Button
+              key={zone}
+              variant={selectedZone === zone ? 'solid' : 'outline'}
+              onPress={() => setSelectedZone(zone)}
+            >
+              {zone}
+            </Button>
+          ))}
+        </VStack>
 
-        <Button title="Buscar" onPress={handleSearch} color="#333" />
-      </View>
-
-      {/* Sección del mapa */}
-      <View style={styles.mapContainer}>
-        {location && (
-          <WebView
-            style={styles.map}
-            originWhitelist={['*']}
-            source={{
-              uri: `https://www.google.com/maps?q=${location.coords.latitude},${location.coords.longitude}&z=15`,
-            }}
+        {/* Imagen de la zona seleccionada */}
+        <VStack style={styles.imageContainer}>
+          <Image
+            source={selectedZone ? zoneImages[selectedZone] : require('../../assets/images/Centro.jpeg')}
+            style={styles.image}
           />
-        )}
-      </View>
-    </View>
+          
+        </VStack>
+
+      </HStack>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
     padding: 16,
     backgroundColor: '#fff',
   },
-  formContainer: {
-    flex: 1,
-    paddingRight: 16,
+  eventImage: {
+    width: '100%',
+    height: 100,
+    borderRadius: 8,
+    marginBottom: 8,
   },
-  label: {
-    fontSize: 16,
-    marginBottom: 4,
+  imageContainer: {
+    width: '40%',
+    height: 'auto',
+    marginRight: 20,
+    alignItems: 'center', // Centra el botón horizontalmente
   },
-  input: {
-    height: 40,
-    borderColor: '#6200EE',
-    borderWidth: 1,
-    marginBottom: 16,
-    paddingHorizontal: 8,
+  image: {
+    width: '100%',
+    height: 600, // Ajustar tamaño de la imagen según sea necesario
+    borderRadius: 10,
+    marginBottom: 10, // Espacio entre la imagen y el botón
+  },
+  mapButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     borderRadius: 4,
+    marginTop: 10,
   },
-  mapContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  locationContainer: {
-    width: '120%',
-    height: '60%',
-    
-  },
-  map: {
-      width: '100%',
-      height: '5%',
+  mapButtonText: {
+    color: '#ffffff',
+    fontWeight: 'bold',
   },
 });
+
+export default AddressSearchScreen;
