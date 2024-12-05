@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Modal,
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  FlatList,
-  Image,
-} from 'react-native';
+import { Modal, View, Text, StyleSheet, TextInput, TouchableOpacity, FlatList, Image} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 function OpinionesModal() {
   const [modalVisible, setModalVisible] = useState(true);
@@ -30,11 +22,13 @@ function OpinionesModal() {
       <View style={styles.overlay}>
         <View style={styles.modalContainer}>
           <View style={styles.header}>
-            <Image
-              source={{ uri: 'https://via.placeholder.com/40' }} // Cambia a tu logo local
-              style={styles.logo}
-            />
-            <Text style={styles.title}>OPINIONES</Text>
+          <Icon
+                  name="chatbox-ellipses"
+                  size={30}
+                  color="gray"
+                  style={styles.socialIcon}
+                />
+            <Text style={styles.title}> OPINIONES </Text>
           </View>
 
           <FlatList
@@ -42,9 +36,11 @@ function OpinionesModal() {
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <View style={styles.opinionContainer}>
-                <Image
-                  source={{ uri: 'https://via.placeholder.com/40' }}
-                  style={styles.avatar}
+                <Icon
+                  name="people-circle"
+                  size={30}
+                  color="gray"
+                  style={styles.socialIcon}
                 />
                 <View style={styles.opinionTextContainer}>
                   <Text style={styles.opinionText}>{item.texto}</Text>
@@ -65,9 +61,9 @@ function OpinionesModal() {
           <View style={styles.buttonsContainer}>
             <TouchableOpacity
               style={styles.closeButton}
-              onPress={() => setModalVisible(false)}
+              onPress={() => navigation.navigate('Home')} // Navega a HomeScreen
             >
-              <Text style={styles.buttonText}>CERRAR</Text>
+              <Text style={styles.buttonText}>VOLVER AL INICIO</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.addButton} onPress={agregarOpinion}>
               <Text style={styles.buttonText}>AGREGAR OPINIÓN</Text>
@@ -154,6 +150,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  socialIcon: {
+    marginHorizontal: 10,
   },
 });
 
