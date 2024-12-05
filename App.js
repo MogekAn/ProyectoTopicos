@@ -85,10 +85,6 @@ export default function App() {
               tabBarButton: () => null, // Oculta el botón de la barra inferior
             }}
           />
-<<<<<<< HEAD
-         
-=======
->>>>>>> 027480960b53cb90cd2eaea7210ba66fc155ffe0
           <Tab.Screen 
             name="Directorio" 
             component={DirectorioScreen} 
@@ -117,10 +113,6 @@ export default function App() {
               tabBarButton: () => null, // Oculta el botón de la barra inferior
             }}
           />
-<<<<<<< HEAD
-          
-=======
->>>>>>> 027480960b53cb90cd2eaea7210ba66fc155ffe0
           <Tab.Screen 
             name="Cerca" 
             component={AddressSearchScreen} 
@@ -128,7 +120,7 @@ export default function App() {
               tabBarButton: () => null, // Oculta el botón de la barra inferior
             }}
           />
-<<<<<<< HEAD
+
           <Tab.Screen 
             name="Comentarios" 
             component={OpinionesModal} 
@@ -136,8 +128,6 @@ export default function App() {
               tabBarButton: () => null, // Oculta el botón de la barra inferior
             }}
           />
-=======
->>>>>>> 027480960b53cb90cd2eaea7210ba66fc155ffe0
           
           <Tab.Screen name="Sobre Nosotros" component={Competencias} />
           <Tab.Screen name="Contacto" component={ContactosScreen} />

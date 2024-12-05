@@ -83,8 +83,8 @@ function Market({ route, navigation }) {
               <Pressable style={styles.mapButton} onPress={handleCommentsPress}>
                 <Text style={styles.mapButtonText}>Comentarios</Text>
               </Pressable>
+
             </View>
-            
           </View>
         </View>
       </View>

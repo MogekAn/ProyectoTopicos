@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Linking, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-function Kudai({ route }) {
+function Kudai({ route, navigation }) {
   const { event } = route.params;
 
   // Estados para los íconos
   const [isLiked, setIsLiked] = useState(false); // Controla el icono del corazón
   const [isScheduled, setIsScheduled] = useState(false); // Controla el icono del calendario
+
+  
+  const handleCommentsPress = () => {
+    navigation.navigate('Comentarios');  // Redirige a la pantalla de comentarios
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -73,6 +78,11 @@ function Kudai({ route }) {
                   onPress={() => Linking.openURL("https://arema.mx/evento/13078")}
                 />
               </View>
+
+              <Pressable style={styles.mapButton} onPress={handleCommentsPress}>
+                <Text style={styles.mapButtonText}>Comentarios</Text>
+              </Pressable>
+
             </View>
           </View>
         </View>
